@@ -3,16 +3,15 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
 import 'package:flutter_base_app/src/utils/session_manager.dart';
 import 'package:flutter_base_app/src/views/dashboard/dashboard_page.dart';
-import 'package:flutter_base_app/src/views/login/bloc/login_cubit.dart';
 import 'package:flutter_base_app/src/utils/const.dart';
-import 'package:flutter_base_app/src/views/reset_password/reset_password_page.dart';
+import 'package:flutter_base_app/src/views/sign_in/bloc/sign_in_cubit.dart';
 import 'package:flutter_base_app/src/views/sign_up/sign_up_page.dart';
 import 'package:flutter_base_app/src/widget/loa_button.dart';
 import 'package:flutter_base_app/src/widget/loa_loading.dart';
 import 'package:flutter_base_app/src/widget/loa_no_connection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LoginPage extends StatelessWidget {
+class SignInPage extends StatelessWidget {
 
   final SessionManager _sessionManager = SessionManager();
   final _emailController = TextEditingController();
@@ -45,10 +44,10 @@ class LoginPage extends StatelessWidget {
         height: screen.height,
         width: screen.width,
         child: BlocProvider(
-          create: (context) => LoginCubit(),
-          child: BlocListener<LoginCubit, LoginState>(
+          create: (context) => SignInCubit(),
+          child: BlocListener<SignInCubit, SignInState>(
             listener: (loginBlocContext, state) {
-              if (state is LoginSuccess) {
+              if (state is SignInSuccess) {
                 var member = state.member;
                 _sessionManager.setActiveMember(member);
                 Navigator.pushAndRemoveUntil(
@@ -56,16 +55,16 @@ class LoginPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => DashboardPage()),
                       (Route<dynamic> route) => false,
                 );
-              } else if (state is LoginError) {
+              } else if (state is SignInError) {
                 final snackBar = SnackBar(
                   content: Text(state.message),
                 );
                 Scaffold.of(loginBlocContext).showSnackBar(snackBar);
               }
             },
-            child: BlocBuilder<LoginCubit, LoginState>(
+            child: BlocBuilder<SignInCubit, SignInState>(
                 builder: (loginBlocContext, loginState) {
-                  if (loginState is LoginIdle) {
+                  if (loginState is SignInIdle) {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +75,7 @@ class LoginPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                'Login',
+                                'SignIn',
                                 style: textTheme.headline4.apply(
                                     color: BASE_COLOR
                                 ),
@@ -179,7 +178,7 @@ class LoginPage extends StatelessWidget {
                               action: () {
                                 var email = _emailController.text;
                                 var password = _passwordController.text;
-                                loginBlocContext.bloc<LoginCubit>().loginUser(
+                                loginBlocContext.bloc<SignInCubit>().loginUser(
                                     email, password);
                               }
                           ),
@@ -212,47 +211,14 @@ class LoginPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        FadeAnimation(
-                          delay: 1.5,
-                          widget: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: Center(child: Text('atau')),
-                          ),
-                        ),
-                        FadeAnimation(
-                          delay: 1.6,
-                          widget: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Lupa kata sandi?',
-                                style: textTheme.caption.apply(
-                                    color: Colors.grey
-                                ),
-                              ),
-                              SizedBox(width: 8,),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => ResetPasswordPage()));
-                                },
-                                child: Text(
-                                  'Reset',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        )
                       ],
                     );
-                  } else if (loginState is LoginLoading) {
+                  } else if (loginState is SignInLoading) {
                     return LoaLoading(message: loginState.message);
-                  } else if(loginState is LoginFatalError) {
+                  } else if(loginState is SignInFatalError) {
                     return LoaNoConnection(
                       message: loginState.message,
-                      action: () => loginBlocContext.bloc<LoginCubit>().resetForm(),
+                      action: () => loginBlocContext.bloc<SignInCubit>().resetForm(),
                     );
                   } else {
                     return Container();

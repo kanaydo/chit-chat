@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/src/utils/session_manager.dart';
 import 'package:flutter_base_app/src/views/dashboard/dashboard_page.dart';
-import 'package:flutter_base_app/src/views/login/login_page.dart';
 import 'package:flutter_base_app/src/utils/const.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
+import 'package:flutter_base_app/src/views/sign_in/sign_in_page.dart';
 import 'package:flutter_base_app/src/widget/loa_button.dart';
 import 'package:flutter_base_app/src/widget/loa_loading.dart';
 import 'package:flutter_base_app/src/widget/loa_no_connection.dart';
@@ -241,7 +241,7 @@ class SignUpPage extends StatelessWidget {
                                     SizedBox(width: 4,),
                                     InkWell(
                                       onTap: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage()));
                                       },
                                       child: Text(
                                         'Masuk',

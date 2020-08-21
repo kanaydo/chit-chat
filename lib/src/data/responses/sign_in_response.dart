@@ -1,11 +1,11 @@
 import 'package:flutter_base_app/src/data/model/member.dart';
 
-class LoginResponse {
+class SignInResponse {
   bool _result;
   String _message;
   Member _member;
 
-  LoginResponse.fromJSON(json) {
+  SignInResponse.fromJSON(json) {
     _result = json['result'];
     _message = json['message'];
     _member = new Member.fromJSON(json['member']);

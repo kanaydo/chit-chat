@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_app/src/views/dashboard/bloc/dashboard_cubit.dart';
 import 'package:flutter_base_app/src/views/dashboard/member_point_card.dart';
 import 'package:flutter_base_app/src/views/dashboard/shimmer_loading_member_card.dart';
-import 'package:flutter_base_app/src/views/profile/profile_page.dart';
-import 'package:flutter_base_app/src/views/transactions/transactions_page.dart';
-import 'package:flutter_base_app/src/views/welcome/banner_item.dart';
 import 'package:flutter_base_app/src/utils/const.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
 import 'package:flutter_base_app/src/widget/loa_no_connection.dart';
@@ -18,7 +15,6 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size screen = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -34,7 +30,6 @@ class DashboardPage extends StatelessWidget {
         actions: <Widget>[
           GestureDetector(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
             },
             child: Icon(
               Icons.person,
@@ -45,7 +40,7 @@ class DashboardPage extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16.0, right: 16.0),
             child: GestureDetector(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => TransactionsPage()));
+
               },
               child: Icon(
                 Icons.history,
@@ -62,7 +57,6 @@ class DashboardPage extends StatelessWidget {
           child: BlocBuilder<DashboardCubit, DashboardState>(
             builder: (builderContext, state) {
               if (state is IdleDashboard) {
-                var banners = state.banners;
                 return RefreshIndicator(
                   onRefresh: () => refreshPage(builderContext),
                   child: ListView(
@@ -86,19 +80,6 @@ class DashboardPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      FadeAnimation(
-                        delay: 1.4,
-                        widget: Column(
-                          children: <Widget>[
-                            ListView.builder(
-                                itemCount: banners?.length,
-                                physics: BouncingScrollPhysics(),
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) => BannerItem(banner: banners[index], height: screen.height / 3)
-                            ),
-                          ],
-                        ),
-                      )
                     ],
                   ),
                 );

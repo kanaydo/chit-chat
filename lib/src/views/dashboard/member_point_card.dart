@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/src/data/model/member.dart';
 import 'package:flutter_base_app/src/utils/const.dart';
-import 'package:flutter_base_app/src/views/reward/reward_page.dart';
-import 'package:flutter_base_app/src/widget/loa_button.dart';
 import 'package:flutter_base_app/src/widget/loa_card.dart';
 
 class MemberPointCard extends StatelessWidget {
@@ -78,15 +76,6 @@ class MemberPointCard extends StatelessWidget {
                   Divider(
                     color: Colors.white,
                   ),
-                  LoaButton(
-                      titleColor: Colors.white,
-                      borderColor: Colors.white,
-                      color: BASE_COLOR,
-                      minWidth: double.infinity,
-                      title: 'TUKAR POIN', action: () {
-                    Navigator.push(context, MaterialPageRoute( builder: (context) => RewardPage()));
-                  }
-                  )
                 ],
               ),
             ),

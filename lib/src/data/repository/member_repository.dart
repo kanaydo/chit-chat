@@ -10,7 +10,7 @@ class MemberRepository extends ApiClient {
   signInMember(Map<String, dynamic> params) async {
     try {
       var response = await dio.post('authentications', data: json.encode(params));
-      LoginResponse loginResponse = LoginResponse.fromJSON(response.data);
+      SignInResponse loginResponse = SignInResponse.fromJSON(response.data);
       return loginResponse;
     } on DioError catch(e) {
       if(e.response != null) {
