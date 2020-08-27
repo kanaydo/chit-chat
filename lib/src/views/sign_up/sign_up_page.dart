@@ -14,10 +14,8 @@ import 'package:flutter_base_app/src/views/sign_up/bloc/sign_up_cubit.dart';
 class SignUpPage extends StatelessWidget {
 
   final _emailController = TextEditingController();
-  final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
   final _emailFocusNode = new FocusNode();
-  final _phoneFocusNode = new FocusNode();
   final _passwordFocusNode = new FocusNode();
   final SessionManager _sessionManager = SessionManager();
 
@@ -139,44 +137,6 @@ class SignUpPage extends StatelessWidget {
                             ),
                             new GestureDetector(
                               onTap: () {
-                                _phoneFocusNode.requestFocus();
-                              },
-                              child: Container(
-                                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                margin: EdgeInsets.symmetric(vertical: 4.0),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: SOFT_COLOR
-                                ),
-                                //color: SOFT_COLOR,
-                                child: Row(
-                                  children: <Widget>[
-                                    Text(
-                                      "Phone",
-                                      style: TextStyle(
-                                          color: Colors.grey
-                                      ),
-                                    ),
-                                    SizedBox(width: 8,),
-                                    new Flexible(
-                                      child: new TextField(
-                                        controller: _phoneController,
-                                        focusNode: _phoneFocusNode,
-                                        style: TextStyle(
-                                            color: BASE_COLOR
-                                        ),
-                                        textAlign: TextAlign.right,
-                                        decoration: InputDecoration(
-                                            border: InputBorder.none
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            new GestureDetector(
-                              onTap: () {
                                 _passwordFocusNode.requestFocus();
                               },
                               child: Container(
@@ -224,7 +184,6 @@ class SignUpPage extends StatelessWidget {
                                     borderColor: BASE_COLOR,
                                     action: () {
                                       String email = _emailController.text.trim();
-                                      String phone = _phoneController.text.trim();
                                       String password = _passwordController.text.trim();
                                       signUpBuilder.bloc<SignUpCubit>().signUpUser(email, password);
                                     }
