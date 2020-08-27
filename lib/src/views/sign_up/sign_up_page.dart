@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/src/core/routes.dart';
 import 'package:flutter_base_app/src/core/session_manager.dart';
 import 'package:flutter_base_app/src/core/strings.dart';
 import 'package:flutter_base_app/src/views/dashboard/dashboard_page.dart';
@@ -57,11 +58,7 @@ class SignUpPage extends StatelessWidget {
                     var member = state.signUpResponse.member;
                     if(result == true && member.id != null) {
                       _sessionManager.setActiveMember(member);
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => DashboardPage()),
-                            (Route<dynamic> route) => false,
-                      );
+                      Navigator.pushNamedAndRemoveUntil(context, Routes.dashboard, (route) => false);
                     }
                   } else if (state is SignUpError) {
                     final snackBar = SnackBar(
