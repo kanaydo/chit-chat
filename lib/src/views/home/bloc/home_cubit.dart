@@ -1,4 +1,4 @@
-import 'package:flutter_base_app/src/core/strings.dart';
+import 'package:flutter_base_app/src/core/const/strings.dart';
 import 'package:flutter_base_app/src/core/session_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';

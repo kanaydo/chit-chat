@@ -1,4 +1,4 @@
-import 'package:flutter_base_app/src/core/app_exception.dart';
+import 'package:flutter_base_app/src/core/network/app_exception.dart';
 import 'package:flutter_base_app/src/data/model/img_banner.dart';
 import 'package:flutter_base_app/src/data/model/member.dart';
 import 'package:flutter_base_app/src/data/repository/banner_repository.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/src/core/app_color.dart';
+import 'package:flutter_base_app/src/core/const/app_color.dart';
 
 class LoaTextField extends StatelessWidget {
 
@@ -30,7 +30,6 @@ class LoaTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           color: AppColor.SOFT_COLOR
         ),
-        //color: SOFT_COLOR,
         child: Row(
           children: <Widget>[
             Text(

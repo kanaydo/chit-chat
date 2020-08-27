@@ -1,7 +1,7 @@
-import 'package:flutter_base_app/src/core/app_exception.dart';
+import 'package:flutter_base_app/src/core/network/app_exception.dart';
 import 'package:flutter_base_app/src/data/repository/member_repository.dart';
 import 'package:flutter_base_app/src/data/responses/sign_up_response.dart';
-import 'package:flutter_base_app/src/core/strings.dart';
+import 'package:flutter_base_app/src/core/const/strings.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 part 'sign_up_state.dart';

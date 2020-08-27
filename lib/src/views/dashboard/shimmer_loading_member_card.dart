@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/src/core/app_color.dart';
+import 'package:flutter_base_app/src/core/const/app_color.dart';
 import 'package:flutter_base_app/src/utils/banner_shimmer.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
 import 'package:flutter_base_app/src/widget/loa_button.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/src/core/app_color.dart';
+import 'package:flutter_base_app/src/core/const/app_color.dart';
 import 'package:flutter_base_app/src/core/routes.dart';
 import 'package:flutter_base_app/src/core/session_manager.dart';
-import 'package:flutter_base_app/src/core/strings.dart';
+import 'package:flutter_base_app/src/core/const/strings.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
 import 'package:flutter_base_app/src/widget/loa_button.dart';
 import 'package:flutter_base_app/src/widget/loa_loading.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/src/core/app_color.dart';
+import 'package:flutter_base_app/src/core/const/app_color.dart';
 import 'package:shimmer/shimmer.dart';
 
 class LoaShimmerContainer extends StatelessWidget {

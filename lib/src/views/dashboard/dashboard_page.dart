@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/src/core/app_color.dart';
+import 'package:flutter_base_app/src/core/const/app_color.dart';
 import 'package:flutter_base_app/src/views/dashboard/bloc/dashboard_cubit.dart';
 import 'package:flutter_base_app/src/views/dashboard/member_point_card.dart';
 import 'package:flutter_base_app/src/views/dashboard/shimmer_loading_member_card.dart';

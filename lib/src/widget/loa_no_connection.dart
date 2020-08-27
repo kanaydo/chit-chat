@@ -1,6 +1,6 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/src/core/app_color.dart';
+import 'package:flutter_base_app/src/core/const/app_color.dart';
 import 'package:flutter_base_app/src/widget/loa_button.dart';
 
 class LoaNoConnection extends StatelessWidget {
