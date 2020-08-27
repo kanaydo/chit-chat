@@ -1,4 +1,4 @@
-import 'package:flutter_base_app/src/core/api_exception.dart';
+import 'package:flutter_base_app/src/core/app_exception.dart';
 import 'package:flutter_base_app/src/data/model/member.dart';
 import 'package:flutter_base_app/src/data/repository/member_repository.dart';
 import 'package:flutter_base_app/src/data/responses/sign_in_response.dart';

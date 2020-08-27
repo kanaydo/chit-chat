@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
-import 'package:flutter_base_app/src/utils/session_manager.dart';
+import 'package:flutter_base_app/src/core/session_manager.dart';
 import 'package:flutter_base_app/src/views/dashboard/dashboard_page.dart';
 import 'package:flutter_base_app/src/utils/const.dart';
 import 'package:flutter_base_app/src/views/sign_in/bloc/sign_in_cubit.dart';

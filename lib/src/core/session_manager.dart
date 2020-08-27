@@ -4,12 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SessionManager {
 
-  // set active member
   void setActiveMember(Member member) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    // set active user id
     prefs.setInt(MEMBER_ID_KEY, member.id);
-    // set active session to true
     prefs.setBool(MEMBER_LOGIN_STATUS_KEY, true);
   }
 

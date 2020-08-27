@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/src/utils/session_manager.dart';
+import 'package:flutter_base_app/src/core/session_manager.dart';
+import 'package:flutter_base_app/src/core/strings.dart';
 import 'package:flutter_base_app/src/views/dashboard/dashboard_page.dart';
 import 'package:flutter_base_app/src/utils/const.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
@@ -84,13 +85,13 @@ class SignUpPage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Text(
-                                    "Sign up",
+                                    Strings.LABEL_SIGN_UP,
                                     style: textTheme.headline4.apply(
                                         color: BASE_COLOR
                                     ),
                                   ),
                                   Text(
-                                    "Buat akun baru anda",
+                                    Strings.LABEL_CREATE_NEW_ACCOUNT,
                                     style: textTheme.overline.apply(
                                         color: Colors.grey
                                     ),
@@ -217,7 +218,7 @@ class SignUpPage extends StatelessWidget {
                               children: <Widget>[
                                 LoaButton(
                                     color: BASE_COLOR,
-                                    title: "Daftar",
+                                    title: Strings.COMMAND_SIGN_UP,
                                     titleColor: Colors.white,
                                     minWidth: double.infinity,
                                     borderColor: BASE_COLOR,
@@ -225,7 +226,7 @@ class SignUpPage extends StatelessWidget {
                                       String email = _emailController.text.trim();
                                       String phone = _phoneController.text.trim();
                                       String password = _passwordController.text.trim();
-                                      signUpBuilder.bloc<SignUpCubit>().signUpUser(email, phone, password);
+                                      signUpBuilder.bloc<SignUpCubit>().signUpUser(email, password);
                                     }
                                 ),
                                 SizedBox(height: 8.0,),
@@ -233,7 +234,7 @@ class SignUpPage extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     Text(
-                                      'Sudah punya akun?',
+                                      Strings.LABEL_HAVING_ACCOUNT_ALREADY,
                                       style: textTheme.caption.apply(
                                           color: Colors.grey
                                       ),
@@ -244,7 +245,7 @@ class SignUpPage extends StatelessWidget {
                                         Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage()));
                                       },
                                       child: Text(
-                                        'Masuk',
+                                        Strings.COMMAND_SIGN_IN,
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold
                                         ),

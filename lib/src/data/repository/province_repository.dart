@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_base_app/src/core/api_client.dart';
-import 'package:flutter_base_app/src/core/api_exception.dart';
+import 'package:flutter_base_app/src/core/app_exception.dart';
 import 'package:flutter_base_app/src/data/model/city.dart';
 import 'package:flutter_base_app/src/data/model/district.dart';
 import 'package:flutter_base_app/src/data/model/province.dart';

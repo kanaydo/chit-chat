@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:flutter_base_app/src/core/api_exception.dart';
+import 'package:flutter_base_app/src/core/app_exception.dart';
 import 'package:flutter_base_app/src/core/api_client.dart';
 import 'package:flutter_base_app/src/data/responses/member_responses.dart';
 import 'package:flutter_base_app/src/data/responses/transactions_response.dart';

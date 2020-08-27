@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_base_app/src/core/api_client.dart';
-import 'package:flutter_base_app/src/core/api_exception.dart';
+import 'package:flutter_base_app/src/core/app_exception.dart';
 import 'package:flutter_base_app/src/data/responses/redeem_response.dart';
 
 class RedeemRepository extends ApiClient {
