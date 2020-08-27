@@ -3,7 +3,6 @@ import 'package:flutter_base_app/src/core/app_color.dart';
 import 'package:flutter_base_app/src/core/routes.dart';
 import 'package:flutter_base_app/src/core/session_manager.dart';
 import 'package:flutter_base_app/src/core/strings.dart';
-import 'package:flutter_base_app/src/utils/const.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
 import 'package:flutter_base_app/src/widget/loa_button.dart';
 import 'package:flutter_base_app/src/widget/loa_loading.dart';
@@ -71,7 +70,7 @@ class SignUpPage extends StatelessWidget {
                                   Text(
                                     Strings.LABEL_SIGN_UP,
                                     style: textTheme.headline4.apply(
-                                        color: BASE_COLOR
+                                        color: AppColor.BASE_COLOR
                                     ),
                                   ),
                                   Text(
@@ -92,7 +91,7 @@ class SignUpPage extends StatelessWidget {
                                 margin: EdgeInsets.symmetric(vertical: 4.0),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: SOFT_COLOR
+                                    color: AppColor.SOFT_COLOR
                                 ),
                                 child: Row(
                                   children: <Widget>[
@@ -108,7 +107,7 @@ class SignUpPage extends StatelessWidget {
                                         controller: _emailController,
                                         focusNode: _emailFocusNode,
                                         style: TextStyle(
-                                            color: BASE_COLOR
+                                            color: AppColor.BASE_COLOR
                                         ),
                                         textAlign: TextAlign.right,
                                         decoration: InputDecoration(
@@ -129,7 +128,7 @@ class SignUpPage extends StatelessWidget {
                                 margin: EdgeInsets.symmetric(vertical: 4.0),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: SOFT_COLOR
+                                    color: AppColor.SOFT_COLOR
                                 ),
                                 child: Row(
                                   children: <Widget>[
@@ -146,7 +145,7 @@ class SignUpPage extends StatelessWidget {
                                         focusNode: _passwordFocusNode,
                                         obscureText: true,
                                         style: TextStyle(
-                                            color: BASE_COLOR
+                                            color: AppColor.BASE_COLOR
                                         ),
                                         textAlign: TextAlign.right,
                                         decoration: InputDecoration(
@@ -161,11 +160,11 @@ class SignUpPage extends StatelessWidget {
                             Column(
                               children: <Widget>[
                                 LoaButton(
-                                    color: BASE_COLOR,
+                                    color: AppColor.BASE_COLOR,
                                     title: Strings.COMMAND_SIGN_UP,
                                     titleColor: Colors.white,
                                     minWidth: double.infinity,
-                                    borderColor: BASE_COLOR,
+                                    borderColor: AppColor.BASE_COLOR,
                                     action: () {
                                       String email = _emailController.text.trim();
                                       String password = _passwordController.text.trim();

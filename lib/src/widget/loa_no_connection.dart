@@ -1,6 +1,6 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/src/utils/const.dart';
+import 'package:flutter_base_app/src/core/app_color.dart';
 import 'package:flutter_base_app/src/widget/loa_button.dart';
 
 class LoaNoConnection extends StatelessWidget {
@@ -49,7 +49,7 @@ class LoaNoConnection extends StatelessWidget {
           ),
           LoaButton(
               minWidth: double.infinity,
-              color: BASE_COLOR,
+              color: AppColor.BASE_COLOR,
               titleColor: Colors.white,
               borderColor: Colors.white,
               title: "Coba Lagi",

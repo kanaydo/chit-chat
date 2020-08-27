@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/src/core/app_color.dart';
 import 'package:flutter_base_app/src/utils/banner_shimmer.dart';
-import 'package:flutter_base_app/src/utils/const.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
 import 'package:flutter_base_app/src/widget/loa_button.dart';
 import 'package:flutter_base_app/src/widget/loa_card.dart';
@@ -39,7 +39,7 @@ class ShimmerLoadingMemberCard extends StatelessWidget {
                     ],
                   ),
                   Divider(
-                    color: SOFT_COLOR,
+                    color: AppColor.SOFT_COLOR,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +63,7 @@ class ShimmerLoadingMemberCard extends StatelessWidget {
                                     child: Text(
                                       '500',
                                       style: textTheme.headline4.apply(
-                                          color: BASE_COLOR
+                                          color: AppColor.BASE_COLOR
                                       ),
                                     ),
                                   ),
@@ -86,7 +86,7 @@ class ShimmerLoadingMemberCard extends StatelessWidget {
                     child: LoaButton(
                         titleColor: Colors.white,
                         borderColor: Colors.white,
-                        color: BASE_COLOR,
+                        color: AppColor.BASE_COLOR,
                         minWidth: double.infinity,
                         title: 'TUKAR POIN', action: () {}
                     ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/src/core/app_color.dart';
 import 'package:flutter_base_app/src/data/model/member.dart';
-import 'package:flutter_base_app/src/utils/const.dart';
 import 'package:flutter_base_app/src/widget/loa_card.dart';
 
 class MemberPointCard extends StatelessWidget {
@@ -38,7 +38,7 @@ class MemberPointCard extends StatelessWidget {
                     ],
                   ),
                   Divider(
-                    color: SOFT_COLOR,
+                    color: AppColor.SOFT_COLOR,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +59,7 @@ class MemberPointCard extends StatelessWidget {
                                 Text(
                                   '${member?.currentPoints}',
                                   style: textTheme.headline4.apply(
-                                      color: BASE_COLOR
+                                      color: AppColor.BASE_COLOR
                                   ),
                                 ),
                               ],

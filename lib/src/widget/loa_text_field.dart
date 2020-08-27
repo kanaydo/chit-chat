@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/src/utils/const.dart';
+import 'package:flutter_base_app/src/core/app_color.dart';
 
 class LoaTextField extends StatelessWidget {
 
@@ -28,7 +28,7 @@ class LoaTextField extends StatelessWidget {
         margin: EdgeInsets.symmetric(vertical: 4.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: SOFT_COLOR
+          color: AppColor.SOFT_COLOR
         ),
         //color: SOFT_COLOR,
         child: Row(
@@ -47,7 +47,7 @@ class LoaTextField extends StatelessWidget {
                 keyboardType: keyboardType,
                 focusNode: _focusNode,
                 style: TextStyle(
-                  color: BASE_COLOR
+                  color: AppColor.BASE_COLOR
                 ),
                 textAlign: TextAlign.right,
                 decoration: InputDecoration(

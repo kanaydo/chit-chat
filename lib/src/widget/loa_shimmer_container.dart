@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/src/utils/const.dart';
+import 'package:flutter_base_app/src/core/app_color.dart';
 import 'package:shimmer/shimmer.dart';
 
 class LoaShimmerContainer extends StatelessWidget {
@@ -16,7 +16,7 @@ class LoaShimmerContainer extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: SOFT_COLOR
+            color: AppColor.SOFT_COLOR
         ),
         child: child,
       ),

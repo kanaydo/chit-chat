@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/src/core/app_color.dart';
 import 'package:flutter_base_app/src/views/dashboard/bloc/dashboard_cubit.dart';
 import 'package:flutter_base_app/src/views/dashboard/member_point_card.dart';
 import 'package:flutter_base_app/src/views/dashboard/shimmer_loading_member_card.dart';
-import 'package:flutter_base_app/src/utils/const.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
 import 'package:flutter_base_app/src/widget/loa_no_connection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +23,7 @@ class DashboardPage extends StatelessWidget {
           'Pasifik',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            color: BASE_COLOR,
+            color: AppColor.BASE_COLOR,
             letterSpacing: 1
           ),
         ),
@@ -33,7 +33,7 @@ class DashboardPage extends StatelessWidget {
             },
             child: Icon(
               Icons.person,
-              color: BASE_COLOR
+              color: AppColor.BASE_COLOR
             ),
           ),
           Padding(
@@ -44,7 +44,7 @@ class DashboardPage extends StatelessWidget {
               },
               child: Icon(
                 Icons.history,
-                color: BASE_COLOR,
+                color: AppColor.BASE_COLOR,
               ),
             ),
           )

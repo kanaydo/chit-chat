@@ -5,7 +5,6 @@ import 'package:flutter_base_app/src/core/routes.dart';
 import 'package:flutter_base_app/src/core/strings.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
 import 'package:flutter_base_app/src/core/session_manager.dart';
-import 'package:flutter_base_app/src/utils/const.dart';
 import 'package:flutter_base_app/src/views/sign_in/bloc/sign_in_cubit.dart';
 import 'package:flutter_base_app/src/widget/loa_button.dart';
 import 'package:flutter_base_app/src/widget/loa_loading.dart';
@@ -64,7 +63,7 @@ class SignInPage extends StatelessWidget {
                               Text(
                                 Strings.LABEL_SIGN_IN,
                                 style: textTheme.headline4.apply(
-                                    color: BASE_COLOR
+                                    color: AppColor.BASE_COLOR
                                 ),
                               ),
                               Text(
@@ -85,7 +84,7 @@ class SignInPage extends StatelessWidget {
                             margin: EdgeInsets.symmetric(vertical: 4.0),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: SOFT_COLOR
+                                color: AppColor.SOFT_COLOR
                             ),
                             //color: SOFT_COLOR,
                             child: Row(
@@ -102,7 +101,7 @@ class SignInPage extends StatelessWidget {
                                     controller: _emailController,
                                     focusNode: _emailFocusNode,
                                     style: TextStyle(
-                                        color: BASE_COLOR
+                                        color: AppColor.BASE_COLOR
                                     ),
                                     textAlign: TextAlign.right,
                                     decoration: InputDecoration(
@@ -123,7 +122,7 @@ class SignInPage extends StatelessWidget {
                             margin: EdgeInsets.symmetric(vertical: 4.0),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: SOFT_COLOR
+                                color: AppColor.SOFT_COLOR
                             ),
                             //color: SOFT_COLOR,
                             child: Row(
@@ -141,7 +140,7 @@ class SignInPage extends StatelessWidget {
                                     focusNode: _passwordFocusNode,
                                     obscureText: true,
                                     style: TextStyle(
-                                        color: BASE_COLOR
+                                        color: AppColor.BASE_COLOR
                                     ),
                                     textAlign: TextAlign.right,
                                     decoration: InputDecoration(
@@ -158,9 +157,9 @@ class SignInPage extends StatelessWidget {
                           delay: 1.3,
                           widget: LoaButton(
                               title: Strings.COMMAND_SIGN_IN,
-                              color: BASE_COLOR,
+                              color: AppColor.BASE_COLOR,
                               titleColor: Colors.white,
-                              borderColor: BASE_COLOR,
+                              borderColor: AppColor.BASE_COLOR,
                               minWidth: double.infinity,
                               action: () {
                                 var email = _emailController.text;
