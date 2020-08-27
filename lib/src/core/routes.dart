@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_base_app/src/views/dashboard/dashboard_page.dart';
 import 'package:flutter_base_app/src/views/sign_in/sign_in_page.dart';
 import 'package:flutter_base_app/src/views/sign_up/sign_up_page.dart';
@@ -8,7 +9,7 @@ class Routes {
   static const String signUp = '/sign_up';
   static const String dashboard = '/dashboard';
 
-  static Map<String, dynamic> getRoutes() {
+  static Map<String, WidgetBuilder> getRoutes() {
     return {
       Routes.signIn : (context) => SignInPage(),
       Routes.signUp : (context) => SignUpPage(),

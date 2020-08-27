@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_base_app/src/core/app_color.dart';
+import 'package:flutter_base_app/src/core/routes.dart';
 import 'package:flutter_base_app/src/core/strings.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
 import 'package:flutter_base_app/src/core/session_manager.dart';
@@ -29,16 +31,6 @@ class SignInPage extends StatelessWidget {
         elevation: 0,
         brightness: Brightness.light,
         backgroundColor: Colors.transparent,
-        leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios,
-              size: 20,
-              color: BASE_COLOR,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            }
-        ),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
@@ -51,11 +43,7 @@ class SignInPage extends StatelessWidget {
               if (state is SignInSuccess) {
                 var member = state.member;
                 _sessionManager.setActiveMember(member);
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => DashboardPage()),
-                      (Route<dynamic> route) => false,
-                );
+                Navigator.pushNamedAndRemoveUntil(context, Routes.dashboard, (route) => false);
               } else if (state is SignInError) {
                 final snackBar = SnackBar(
                   content: Text(state.message),
@@ -198,14 +186,12 @@ class SignInPage extends StatelessWidget {
                               ),
                               SizedBox(width: 4,),
                               InkWell(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(
-                                      builder: (context) => SignUpPage()));
-                                },
+                                onTap: () => Navigator.pushNamed(context, Routes.signUp),
                                 child: Text(
                                   Strings.LABEL_SIGN_UP,
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColor.BASE_COLOR
                                   ),
                                 ),
                               )

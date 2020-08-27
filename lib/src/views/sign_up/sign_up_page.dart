@@ -31,16 +31,6 @@ class SignUpPage extends StatelessWidget {
         elevation: 0,
         brightness: Brightness.light,
         backgroundColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(
-            Icons.arrow_back_ios,
-            size: 20,
-            color: BASE_COLOR,
-          ),
-        ),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
