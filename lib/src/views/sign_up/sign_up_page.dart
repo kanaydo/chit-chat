@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_app/src/core/routes.dart';
 import 'package:flutter_base_app/src/core/session_manager.dart';
 import 'package:flutter_base_app/src/core/strings.dart';
-import 'package:flutter_base_app/src/views/dashboard/dashboard_page.dart';
 import 'package:flutter_base_app/src/utils/const.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
 import 'package:flutter_base_app/src/views/sign_in/sign_in_page.dart';
@@ -109,7 +108,7 @@ class SignUpPage extends StatelessWidget {
                                 child: Row(
                                   children: <Widget>[
                                     Text(
-                                      "Email",
+                                      Strings.LABEL_EMAIL,
                                       style: TextStyle(
                                           color: Colors.grey
                                       ),
@@ -147,7 +146,7 @@ class SignUpPage extends StatelessWidget {
                                 child: Row(
                                   children: <Widget>[
                                     Text(
-                                      "Password",
+                                      Strings.LABEL_PASSWORD,
                                       style: TextStyle(
                                           color: Colors.grey
                                       ),
