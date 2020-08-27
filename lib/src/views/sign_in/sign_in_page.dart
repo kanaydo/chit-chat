@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_base_app/src/core/strings.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
 import 'package:flutter_base_app/src/core/session_manager.dart';
 import 'package:flutter_base_app/src/views/dashboard/dashboard_page.dart';
@@ -75,13 +76,13 @@ class SignInPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                'SignIn',
+                                Strings.LABEL_SIGN_IN,
                                 style: textTheme.headline4.apply(
                                     color: BASE_COLOR
                                 ),
                               ),
                               Text(
-                                'Masuk untuk melanjutkan',
+                                Strings.SIGN_IN_TO_CONTINUE,
                                 style: textTheme.overline.apply(
                                     color: Colors.grey
                                 ),
@@ -104,7 +105,7 @@ class SignInPage extends StatelessWidget {
                             child: Row(
                               children: <Widget>[
                                 Text(
-                                  "Email/Phone",
+                                  Strings.LABEL_EMAIL,
                                   style: TextStyle(
                                       color: Colors.grey
                                   ),
@@ -142,7 +143,7 @@ class SignInPage extends StatelessWidget {
                             child: Row(
                               children: <Widget>[
                                 Text(
-                                  "Password",
+                                  Strings.LABEL_PASSWORD,
                                   style: TextStyle(
                                       color: Colors.grey
                                   ),
@@ -170,7 +171,7 @@ class SignInPage extends StatelessWidget {
                         FadeAnimation(
                           delay: 1.3,
                           widget: LoaButton(
-                              title: 'login',
+                              title: Strings.COMMAND_SIGN_IN,
                               color: BASE_COLOR,
                               titleColor: Colors.white,
                               borderColor: BASE_COLOR,
@@ -190,7 +191,7 @@ class SignInPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Text(
-                                'Belum punya akun?',
+                                Strings.LABEL_NOT_HAVING_ACCOUNT,
                                 style: textTheme.caption.apply(
                                     color: Colors.grey
                                 ),
@@ -202,7 +203,7 @@ class SignInPage extends StatelessWidget {
                                       builder: (context) => SignUpPage()));
                                 },
                                 child: Text(
-                                  'Daftar',
+                                  Strings.LABEL_SIGN_UP,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold
                                   ),

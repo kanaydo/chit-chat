@@ -1,4 +1,5 @@
 import 'package:flutter_base_app/src/core/app_exception.dart';
+import 'package:flutter_base_app/src/core/strings.dart';
 import 'package:flutter_base_app/src/data/model/member.dart';
 import 'package:flutter_base_app/src/data/repository/member_repository.dart';
 import 'package:flutter_base_app/src/data/responses/sign_in_response.dart';
@@ -16,10 +17,10 @@ class SignInCubit extends Cubit<SignInState> {
 
   void loginUser(String email, String password) async {
     if (email == "" || password == "") {
-      emit(SignInError(message: "Harap isi semua form!"));
+      emit(SignInError(message: Strings.MESSAGE_FILL_ALL_FIELD));
       emit(SignInIdle());
     }else {
-      emit(SignInLoading(message: "Sedang memeriksa login anda, harap bersabar.."));
+      emit(SignInLoading(message: Strings.LOADING_LOGIN_CHECK));
       Map<String, dynamic> body = {
         "credential": email.trim(),
         "password": password.trim()
