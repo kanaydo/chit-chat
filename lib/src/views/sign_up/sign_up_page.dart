@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/src/core/app_color.dart';
 import 'package:flutter_base_app/src/core/routes.dart';
 import 'package:flutter_base_app/src/core/session_manager.dart';
 import 'package:flutter_base_app/src/core/strings.dart';
 import 'package:flutter_base_app/src/utils/const.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
-import 'package:flutter_base_app/src/views/sign_in/sign_in_page.dart';
 import 'package:flutter_base_app/src/widget/loa_button.dart';
 import 'package:flutter_base_app/src/widget/loa_loading.dart';
 import 'package:flutter_base_app/src/widget/loa_no_connection.dart';
@@ -94,7 +94,6 @@ class SignUpPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10),
                                     color: SOFT_COLOR
                                 ),
-                                //color: SOFT_COLOR,
                                 child: Row(
                                   children: <Widget>[
                                     Text(
@@ -132,7 +131,6 @@ class SignUpPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10),
                                     color: SOFT_COLOR
                                 ),
-                                //color: SOFT_COLOR,
                                 child: Row(
                                   children: <Widget>[
                                     Text(
@@ -186,13 +184,12 @@ class SignUpPage extends StatelessWidget {
                                     ),
                                     SizedBox(width: 4,),
                                     InkWell(
-                                      onTap: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage()));
-                                      },
+                                      onTap: () => Navigator.pushNamed(context, Routes.signIn),
                                       child: Text(
                                         Strings.COMMAND_SIGN_IN,
                                         style: TextStyle(
-                                            fontWeight: FontWeight.bold
+                                          fontWeight: FontWeight.bold,
+                                          color: AppColor.BASE_COLOR
                                         ),
                                       ),
                                     )
