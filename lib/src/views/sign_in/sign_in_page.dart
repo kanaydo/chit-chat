@@ -10,7 +10,6 @@ import 'package:flutter_base_app/src/widget/loa_button.dart';
 import 'package:flutter_base_app/src/widget/loa_loading.dart';
 import 'package:flutter_base_app/src/widget/loa_no_connection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class SignInPage extends StatelessWidget {
 

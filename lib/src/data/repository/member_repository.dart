@@ -16,7 +16,9 @@ class MemberRepository extends ApiClient {
         var message = e.response.data['message'];
         throw ApiException(message: message);
       } else{
+        print(e.toString());
         throw Exception(e.toString());
+
       }
     }
   }
