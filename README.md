@@ -17,10 +17,16 @@ A Base Application to create new flutter application, with some custom configura
 
 
 ## Configure Project
-- Clone the project
-  `https://github.com/kanaydo/flutter_base_app.git`
-- Get all dependencies
-  `flutter pub get`
-- Configure build variants
+**Clone the project**
+  ```
+  https://github.com/kanaydo/flutter_base_app.git
+  ```
+  
+**Get all dependencies**
+  ```
+  flutter pub get
+  ```
+  
+**Configure build variants**   
   This project currently run in 2 build variants `debug` and `release`, please make sure that this configuration done before working on this project.
   to build the variants you need to duplicate `.env.template` file become `.env_release` and `.env_debug`, then setup all your environment variable inside both file.
