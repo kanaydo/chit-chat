@@ -3,25 +3,25 @@ import 'package:flutter_base_app/src/core/const/app_color.dart';
 
 class LoaTextField extends StatelessWidget {
 
-  final _focusNode = new FocusNode();
-
   final String label;
   final bool obscureText;
   final TextEditingController controller;
   final TextInputType keyboardType;
+  final FocusNode focusNode;
 
   LoaTextField({
     @required this.label,
-    @required this.obscureText,
     @required this.controller,
-    this.keyboardType = TextInputType.text
+    @required this.focusNode,
+    this.keyboardType = TextInputType.text,
+    this.obscureText = false
   });
 
   @override
   Widget build(BuildContext context) {
     return new GestureDetector(
       onTap: () {
-        _focusNode.requestFocus();
+        focusNode.requestFocus();
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 8.0),
@@ -44,7 +44,7 @@ class LoaTextField extends StatelessWidget {
                 controller: controller,
                 obscureText: obscureText,
                 keyboardType: keyboardType,
-                focusNode: _focusNode,
+                focusNode: focusNode,
                 style: TextStyle(
                   color: AppColor.BASE_COLOR
                 ),
