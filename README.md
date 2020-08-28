@@ -1,4 +1,4 @@
-# flutter_base_app
+# Flutter Base App
 
 A Base Application to create new flutter application, with some custom configuration and project structure. Implementing flutter_bloc as state_management.
 
