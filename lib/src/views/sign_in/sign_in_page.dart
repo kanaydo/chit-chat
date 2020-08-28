@@ -38,7 +38,7 @@ class SignInPage extends StatelessWidget {
           child: BlocListener<SignInCubit, SignInState>(
             listener: (loginBlocContext, state) {
               if (state is SignInSuccess) {
-                var member = state.member;
+                var member = state.user;
                 _sessionManager.setActiveMember(member);
                 Navigator.pushNamedAndRemoveUntil(context, Routes.dashboard, (route) => false);
               } else if (state is SignInError) {

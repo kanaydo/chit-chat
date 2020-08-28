@@ -1,6 +1,6 @@
 import 'package:flutter_base_app/src/core/network/app_exception.dart';
 import 'package:flutter_base_app/src/core/const/strings.dart';
-import 'package:flutter_base_app/src/data/model/member.dart';
+import 'package:flutter_base_app/src/data/model/user.dart';
 import 'package:flutter_base_app/src/data/repository/member_repository.dart';
 import 'package:flutter_base_app/src/data/responses/sign_in_response.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,9 +26,9 @@ class SignInCubit extends Cubit<SignInState> {
         "password": password.trim()
       };
       try {
-        SignInResponse loginResponse = await memberRepository.signInMember(body);
+        SignInResponse loginResponse = await memberRepository.signInUser(body);
         if (loginResponse.result == true) {
-          emit(SignInSuccess(member: loginResponse.member));
+          emit(SignInSuccess(user: loginResponse.member));
           emit(SignInIdle());
         } else {
           emit(SignInError(message: loginResponse.message));

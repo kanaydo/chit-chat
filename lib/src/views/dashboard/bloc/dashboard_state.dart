@@ -4,8 +4,8 @@ part of 'dashboard_cubit.dart';
 abstract class DashboardState {}
 
 class IdleDashboard extends DashboardState {
-  final Member member;
-  IdleDashboard({this.member});
+  final User user;
+  IdleDashboard({this.user});
 }
 
 class LoadingDashboard extends DashboardState {}

@@ -1,5 +1,5 @@
 import 'package:flutter_base_app/src/core/network/app_exception.dart';
-import 'package:flutter_base_app/src/data/model/member.dart';
+import 'package:flutter_base_app/src/data/model/user.dart';
 import 'package:flutter_base_app/src/data/repository/member_repository.dart';
 import 'package:flutter_base_app/src/data/responses/dashboard_response.dart';
 import 'package:flutter_base_app/src/core/session_manager.dart';
@@ -11,30 +11,31 @@ class DashboardCubit extends Cubit<DashboardState>{
 
   SessionManager sessionManager = SessionManager();
   MemberRepository memberRepository = MemberRepository();
-  Member member;
+  User user;
 
   DashboardCubit() : super(null) {
-    getMemberProfile();
+    getUserProfile();
   }
 
-  void getMemberProfile() async {
+  void getUserProfile() async {
     int memberId = await sessionManager.getActiveMember();
     if (memberId != 0) {
-      fetchCurrentMemberProfile(memberId);
+      fetchCurrentUserProfile(memberId);
     }
   }
   
-  void fetchCurrentMemberProfile(int memberId) async {
+  void fetchCurrentUserProfile(int memberId) async {
     emit(LoadingDashboard());
     try {
-      DashboardResponse response = await memberRepository.getMember(memberId);
-      this.member = response.member;
+      DashboardResponse response = await memberRepository.getUser(memberId);
+      this.user = response.user;
+      emit(IdleDashboard(user: user));
     } on ApiException catch (apiException) {
       emit(ErrorDashboard(apiException.toString()));
     } catch (e) {
       emit(ErrorDashboard(e.toString()));
     }
-    emit(IdleDashboard(member: member));
+
   }
 
 }

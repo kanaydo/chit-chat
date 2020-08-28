@@ -6,7 +6,7 @@ import 'package:flutter_base_app/src/data/responses/member_responses.dart';
 
 class MemberRepository extends ApiClient {
 
-  signInMember(Map<String, dynamic> params) async {
+  signInUser(Map<String, dynamic> params) async {
     try {
       var response = await dio.post('authentications', data: json.encode(params));
       SignInResponse loginResponse = SignInResponse.fromJSON(response.data);
@@ -23,7 +23,7 @@ class MemberRepository extends ApiClient {
     }
   }
 
-  getMember(int memberId) async {
+  getUser(int memberId) async {
     try {
       var response = await dio.get('members/$memberId');
       DashboardResponse dashboardResponse = DashboardResponse.fromJSON(response.data);
@@ -38,21 +38,7 @@ class MemberRepository extends ApiClient {
     }
   }
 
-  resetPassword(String email) async {
-    try {
-      var response = await dio.get('members/reset_password?email=$email');
-      return response.data['message'];
-    } on DioError catch(e) {
-      if(e.response != null) {
-        var message = e.response.data['message'];
-        throw ApiException(message: message);
-      } else{
-        throw Exception(e.toString());
-      }
-    }
-  }
-
-  getMemberProfile(int memberId) async {
+  getUserProfile(int memberId) async {
     try {
       var response = await dio.get('members/$memberId/profile');
       ProfileResponse profileResponse = ProfileResponse.fromJSON(response.data);
@@ -67,7 +53,7 @@ class MemberRepository extends ApiClient {
     }
   }
 
-  signUpMember(Map<String, dynamic> params) async {
+  signUpUser(Map<String, dynamic> params) async {
     try {
       var response = await dio.post('members', data: json.encode(params));
       SignUpResponse signUpResponse = SignUpResponse.fromJSON(response.data);
@@ -82,7 +68,7 @@ class MemberRepository extends ApiClient {
     }
   }
 
-  updateMemberProfile(Map<String, dynamic> params, int memberId) async {
+  updateUserProfile(Map<String, dynamic> params, int memberId) async {
     try {
       var response = await dio.patch('members/$memberId', data: json.encode(params));
       ProfileResponse profileResponse = ProfileResponse.fromJSON(response.data);

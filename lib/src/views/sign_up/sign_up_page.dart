@@ -43,7 +43,7 @@ class SignUpPage extends StatelessWidget {
                 listener: (signUpListener, state) {
                   if (state is SignUpSuccess) {
                     var result = state.signUpResponse.result;
-                    var member = state.signUpResponse.member;
+                    var member = state.signUpResponse.user;
                     if(result == true && member.id != null) {
                       _sessionManager.setActiveMember(member);
                       Navigator.pushNamedAndRemoveUntil(context, Routes.dashboard, (route) => false);

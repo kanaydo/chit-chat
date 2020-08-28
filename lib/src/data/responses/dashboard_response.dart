@@ -1,9 +1,9 @@
-import 'package:flutter_base_app/src/data/model/member.dart';
+import 'package:flutter_base_app/src/data/model/user.dart';
 
 class DashboardResponse {
-  Member _member;
+  User _user;
   DashboardResponse.fromJSON(json) {
-    _member = new Member.fromJSON(json['member']);
+    _user = new User.fromJSON(json['member']);
   }
-  Member get member => _member;
+  User get user => _user;
 }

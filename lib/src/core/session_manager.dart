@@ -1,12 +1,12 @@
 import 'package:flutter_base_app/src/core/const/keys.dart';
-import 'package:flutter_base_app/src/data/model/member.dart';
+import 'package:flutter_base_app/src/data/model/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SessionManager {
 
-  void setActiveMember(Member member) async {
+  void setActiveMember(User user) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setInt(Keys.KEY_USER_ID, member.id);
+    prefs.setInt(Keys.KEY_USER_ID, user.id);
     prefs.setBool(Keys.KEY_USER_LOGIN_STATUS, true);
   }
 

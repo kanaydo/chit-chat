@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class DashboardPage extends StatelessWidget {
 
   Future refreshPage(BuildContext context) async {
-    context.bloc<DashboardCubit>().getMemberProfile();
+    context.bloc<DashboardCubit>().getUserProfile();
   }
 
   @override
@@ -43,7 +43,7 @@ class DashboardPage extends StatelessWidget {
               } else if(state is ErrorDashboard) {
                 return LoaNoConnection(
                   message: state.message,
-                  action: () => builderContext.bloc<DashboardCubit>().getMemberProfile(),
+                  action: () => builderContext.bloc<DashboardCubit>().getUserProfile(),
                 );
               } else {
                 return Container();

@@ -11,8 +11,8 @@ class SignInLoading extends SignInState {
 }
 
 class SignInSuccess extends SignInState {
-  final Member member;
-  SignInSuccess({this.member});
+  final User user;
+  SignInSuccess({this.user});
 }
 
 class SignInError extends SignInState {

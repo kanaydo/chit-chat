@@ -1,17 +1,17 @@
-import 'package:flutter_base_app/src/data/model/member.dart';
+import 'package:flutter_base_app/src/data/model/user.dart';
 
 class SignUpResponse {
   bool _result;
   String _message;
-  Member _member;
+  User _user;
 
   SignUpResponse.fromJSON(json){
     _result = json['result'];
     _message = json['message'];
-    _member = new Member.fromJSON(json['member']);
+    _user = new User.fromJSON(json['member']);
   }
 
   bool get result => _result;
   String get message => _message;
-  Member get member => _member;
+  User get user => _user;
 }

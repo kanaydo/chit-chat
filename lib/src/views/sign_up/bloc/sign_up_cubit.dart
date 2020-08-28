@@ -30,7 +30,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       var body = buildUserParams(email, password);
       emit(SignUpLoading(message: Strings.LOADING_SIGN_UP));
       try {
-        SignUpResponse response = await memberRepository.signUpMember(body);
+        SignUpResponse response = await memberRepository.signUpUser(body);
         emit(SignUpSuccess(signUpResponse: response));
         emmitToIdle();
       } on ApiException catch(apiException) {
