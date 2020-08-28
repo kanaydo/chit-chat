@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/src/core/routes.dart';
 import 'package:flutter_base_app/src/views/home/home_page.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future main() async {
+  await DotEnv().load('.env.debug');
   runApp(MyApp());
 }
 

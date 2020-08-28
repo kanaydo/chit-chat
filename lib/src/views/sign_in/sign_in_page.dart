@@ -10,6 +10,7 @@ import 'package:flutter_base_app/src/widget/loa_button.dart';
 import 'package:flutter_base_app/src/widget/loa_loading.dart';
 import 'package:flutter_base_app/src/widget/loa_no_connection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class SignInPage extends StatelessWidget {
 
@@ -21,6 +22,7 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(DotEnv().env['VAR_NAME']);
     final screen = MediaQuery.of(context).size;
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
