@@ -1,16 +1,26 @@
 # flutter_base_app
 
-A new Flutter application.
+A Base Application to create new flutter application, with some custom configuration and project structure. Implementing flutter_bloc as state_management.
 
-## Getting Started
+## List of Dependencies
+- `flutter_bloc`
+- `dio`
+- `shimmer`
+- `simple_animations`
+- `flutter_svg`
+- `font_awesome_flutter`
+- `flare_flutter`
+- `timeline_tile`
+- `dropdown_search`
+- `shared_preferences`
+- `flutter_dotenv`
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Configure Project
+- Clone the project
+  `https://github.com/kanaydo/flutter_base_app.git`
+- Get all dependencies
+  `flutter pub get`
+- Configure build variants
+  This project currently run in 2 build variants `debug` and `release`, please make sure that this configuration done before working on this project.
+  to build the variants you need to duplicate `.env.template` file become `.env_release` and `.env_debug`, then setup all your environment variable inside both file.
