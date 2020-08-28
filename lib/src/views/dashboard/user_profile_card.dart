@@ -3,11 +3,11 @@ import 'package:flutter_base_app/src/core/const/app_color.dart';
 import 'package:flutter_base_app/src/data/model/member.dart';
 import 'package:flutter_base_app/src/widget/loa_card.dart';
 
-class MemberPointCard extends StatelessWidget {
+class UserProfileCard extends StatelessWidget {
 
   final Member member;
 
-  MemberPointCard({@required this.member});
+  UserProfileCard({@required this.member});
 
   @override
   Widget build(BuildContext context) {

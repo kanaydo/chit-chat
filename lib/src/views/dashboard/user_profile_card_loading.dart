@@ -6,7 +6,7 @@ import 'package:flutter_base_app/src/widget/loa_button.dart';
 import 'package:flutter_base_app/src/widget/loa_card.dart';
 import 'package:flutter_base_app/src/widget/loa_shimmer_container.dart';
 
-class ShimmerLoadingMemberCard extends StatelessWidget {
+class UserProfileCardLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
