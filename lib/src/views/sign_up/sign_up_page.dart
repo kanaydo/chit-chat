@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/src/core/const/app_color.dart';
 import 'package:flutter_base_app/src/core/routes.dart';
-import 'package:flutter_base_app/src/core/session_manager.dart';
 import 'package:flutter_base_app/src/core/const/strings.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
 import 'package:flutter_base_app/src/widget/loa_button.dart';
@@ -16,8 +15,6 @@ class SignUpPage extends StatelessWidget {
   final _passwordController = TextEditingController();
   final _emailFocusNode = new FocusNode();
   final _passwordFocusNode = new FocusNode();
-  final SessionManager _sessionManager = SessionManager();
-
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +39,7 @@ class SignUpPage extends StatelessWidget {
               child: BlocListener<SignUpCubit, SignUpState>(
                 listener: (signUpListener, state) {
                   if (state is SignUpSuccess) {
-                    var result = state.signUpResponse.result;
-                    var member = state.signUpResponse.user;
-                    if(result == true && member.id != null) {
-                      _sessionManager.setActiveMember(member);
-                      Navigator.pushNamedAndRemoveUntil(context, Routes.dashboard, (route) => false);
-                    }
+                    Navigator.pushNamedAndRemoveUntil(context, Routes.dashboard, (route) => false);
                   } else if (state is SignUpError) {
                     final snackBar = SnackBar(
                       content: Text(state.message),

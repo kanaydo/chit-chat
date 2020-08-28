@@ -1,5 +1,6 @@
 class Strings {
   static const String MESSAGE_FILL_ALL_FIELD = "Mohon untuk mengisi semua field";
+  static const String MESSAGE_UNKNOWN_ERROR = "Terjadi kesalahan, Mohon coba kembali!";
 
   static const String LOADING_SIGN_UP = "Mendaftarkan akun anda, mohon bersabar!";
   static const String LOADING_FETCH_PROFILE_ = "Sedang mengambil profile..";

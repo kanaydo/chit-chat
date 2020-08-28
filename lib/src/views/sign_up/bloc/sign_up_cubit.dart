@@ -1,4 +1,5 @@
 import 'package:flutter_base_app/src/core/network/app_exception.dart';
+import 'package:flutter_base_app/src/core/session_manager.dart';
 import 'package:flutter_base_app/src/data/repository/member_repository.dart';
 import 'package:flutter_base_app/src/data/responses/sign_up_response.dart';
 import 'package:flutter_base_app/src/core/const/strings.dart';
@@ -8,7 +9,8 @@ part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
 
-  MemberRepository memberRepository = new MemberRepository();
+  MemberRepository memberRepository = MemberRepository();
+  SessionManager sessionManager = SessionManager();
 
   SignUpCubit() : super(SignUpIdle());
 
@@ -31,14 +33,25 @@ class SignUpCubit extends Cubit<SignUpState> {
       emit(SignUpLoading(message: Strings.LOADING_SIGN_UP));
       try {
         SignUpResponse response = await memberRepository.signUpUser(body);
-        emit(SignUpSuccess(signUpResponse: response));
-        emmitToIdle();
+        validateSignUp(response);
       } on ApiException catch(apiException) {
         emit(SignUpError(message: apiException.toString()));
         emmitToIdle();
       } catch (exception) {
         emit(SignUpFatalError(message: exception.toString()));
       }
+    }
+  }
+
+  void validateSignUp(SignUpResponse signUpResponse) {
+    if (signUpResponse.user != null) {
+      var member = signUpResponse.user;
+      sessionManager.setActiveMember(member);
+      emit(SignUpSuccess());
+      emmitToIdle();
+    } else {
+      emit(SignUpError(message: Strings.MESSAGE_UNKNOWN_ERROR));
+      emmitToIdle();
     }
   }
 

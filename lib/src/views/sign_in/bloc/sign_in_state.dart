@@ -10,10 +10,7 @@ class SignInLoading extends SignInState {
   SignInLoading({this.message});
 }
 
-class SignInSuccess extends SignInState {
-  final User user;
-  SignInSuccess({this.user});
-}
+class SignInSuccess extends SignInState {}
 
 class SignInError extends SignInState {
   final String message;

@@ -4,7 +4,6 @@ import 'package:flutter_base_app/src/core/const/app_color.dart';
 import 'package:flutter_base_app/src/core/routes.dart';
 import 'package:flutter_base_app/src/core/const/strings.dart';
 import 'package:flutter_base_app/src/utils/fade_animation.dart';
-import 'package:flutter_base_app/src/core/session_manager.dart';
 import 'package:flutter_base_app/src/views/sign_in/bloc/sign_in_cubit.dart';
 import 'package:flutter_base_app/src/widget/loa_button.dart';
 import 'package:flutter_base_app/src/widget/loa_loading.dart';
@@ -13,7 +12,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInPage extends StatelessWidget {
 
-  final SessionManager _sessionManager = SessionManager();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _emailFocusNode = new FocusNode();
@@ -38,8 +36,6 @@ class SignInPage extends StatelessWidget {
           child: BlocListener<SignInCubit, SignInState>(
             listener: (loginBlocContext, state) {
               if (state is SignInSuccess) {
-                var member = state.user;
-                _sessionManager.setActiveMember(member);
                 Navigator.pushNamedAndRemoveUntil(context, Routes.dashboard, (route) => false);
               } else if (state is SignInError) {
                 final snackBar = SnackBar(

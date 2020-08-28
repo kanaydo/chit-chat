@@ -13,5 +13,5 @@ class SignInResponse {
 
   bool get result => _result;
   String get message => _message;
-  User get member => _user;
+  User get user => _user;
 }

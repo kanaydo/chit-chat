@@ -1,6 +1,6 @@
 import 'package:flutter_base_app/src/core/network/app_exception.dart';
 import 'package:flutter_base_app/src/core/const/strings.dart';
-import 'package:flutter_base_app/src/data/model/user.dart';
+import 'package:flutter_base_app/src/core/session_manager.dart';
 import 'package:flutter_base_app/src/data/repository/member_repository.dart';
 import 'package:flutter_base_app/src/data/responses/sign_in_response.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +9,8 @@ part 'sign_in_state.dart';
 
 class SignInCubit extends Cubit<SignInState> {
 
-  MemberRepository memberRepository = new MemberRepository();
+  MemberRepository memberRepository = MemberRepository();
+  SessionManager sessionManager = SessionManager();
 
   SignInCubit() : super(null){
     emit(SignInIdle());
@@ -27,19 +28,25 @@ class SignInCubit extends Cubit<SignInState> {
       };
       try {
         SignInResponse loginResponse = await memberRepository.signInUser(body);
-        if (loginResponse.result == true) {
-          emit(SignInSuccess(user: loginResponse.member));
-          emit(SignInIdle());
-        } else {
-          emit(SignInError(message: loginResponse.message));
-          emit(SignInIdle());
-        }
+        validateSignIn(loginResponse);
       } on ApiException catch (apiException){
         emit(SignInError(message: apiException.toString()));
         emit(SignInIdle());
       } catch (exception) {
         emit(SignInFatalError(message: exception.toString()));
       }
+    }
+  }
+
+  void validateSignIn(SignInResponse signInResponse) {
+    if (signInResponse.user != null) {
+      var member = signInResponse.user;
+      sessionManager.setActiveMember(member);
+      emit(SignInSuccess());
+      emit(SignInIdle());
+    } else {
+      emit(SignInError(message: Strings.MESSAGE_UNKNOWN_ERROR));
+      emit(SignInIdle());
     }
   }
 
