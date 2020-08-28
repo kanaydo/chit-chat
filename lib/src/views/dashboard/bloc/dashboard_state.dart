@@ -5,8 +5,7 @@ abstract class DashboardState {}
 
 class IdleDashboard extends DashboardState {
   final Member member;
-  final List<ImgBanner> banners;
-  IdleDashboard({this.member, this.banners});
+  IdleDashboard({this.member});
 }
 
 class LoadingDashboard extends DashboardState {}
