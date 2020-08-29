@@ -28,5 +28,11 @@ A Base Application to create new flutter application, with some custom configura
   ```
   
 **Configure build variants**   
-  This project currently run in 2 build variants `debug` and `release`, please make sure that this configuration done before working on this project.
-  to build the variants you need to duplicate `.env.template` file become `.env_release` and `.env_debug`, then setup all your environment variable inside both file.
+  This project currently having 2 variants:
+  - `debug`
+  - `release`   
+  
+  
+  Please make sure that this configuration done before working on this project.
+  - Duplicate `.env.template` become `.env_release` and `.env_debug`
+  - Setup all yours environment variable inside both file.
