@@ -35,7 +35,6 @@ class DashboardCubit extends Cubit<DashboardState>{
     } catch (e) {
       emit(ErrorDashboard(e.toString()));
     }
-
   }
 
 }

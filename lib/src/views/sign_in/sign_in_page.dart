@@ -113,7 +113,8 @@ class SignInPage extends StatelessWidget {
                               Text(
                                 Strings.LABEL_NOT_HAVING_ACCOUNT,
                                 style:
-                                    textTheme.caption.apply(color: Colors.grey),
+                                  textTheme.caption.apply(color: Colors.grey
+                                ),
                               ),
                               SizedBox(
                                 width: 4,
@@ -125,7 +126,8 @@ class SignInPage extends StatelessWidget {
                                   Strings.LABEL_SIGN_UP,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: AppColor.BASE_COLOR),
+                                      color: AppColor.BASE_COLOR
+                                  ),
                                 ),
                               )
                             ],

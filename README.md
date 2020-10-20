@@ -36,3 +36,4 @@ A Base Application to create new flutter application, with some custom configura
   Please make sure that this configuration done before working on this project.
   - Duplicate `.env.template` become `.env_release` and `.env_debug`
   - Setup all yours environment variable inside both file.
+
