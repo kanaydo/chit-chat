@@ -30,6 +30,8 @@
 .pub/
 /build/
 lib/lab
+lib/playground
+assets/pg
 # Web related
 lib/generated_plugin_registrant.dart
 

@@ -39,6 +39,7 @@ dependencies:
   dropdown_search: ^0.4.4
   shared_preferences: ^0.5.8
   flutter_dotenv: ^2.1.0
+  titled_navigation_bar: ^4.1.0
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,16 @@ flutter:
     - assets/flr/email.flr
     - assets/png/logo-pasifik.png
     - assets/flr/connection_error.flr
+    - assets/pg/h_1.png
+    - assets/pg/h_2.png
+    - assets/pg/h_3.png
+    - assets/pg/h_4.png
+    - assets/pg/h_5.png
+    - assets/pg/i_1.png
+    - assets/pg/i_2.png
+    - assets/pg/i_3.png
+    - assets/pg/i_4.png
+    - assets/pg/i_5.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
