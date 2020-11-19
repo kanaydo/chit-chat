@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/views/conversations/conversations_page.dart';
 import 'package:flutter_base_app/views/dashboard/dashboard_page.dart';
 import 'package:flutter_base_app/views/home/bloc/home_cubit.dart';
 import 'package:flutter_base_app/views/sign_in/sign_in_page.dart';
@@ -17,7 +18,7 @@ class HomePage extends StatelessWidget {
                 body: LoaLoading(message: state.message),
               );
             } else if (state is Authenticated) {
-              return DashboardPage();
+              return ConversationPage();
             } else if (state is UnAuthenticated) {
               return SignInPage();
             } else {

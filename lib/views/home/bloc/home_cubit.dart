@@ -10,7 +10,7 @@ class HomeCubit extends Cubit<HomeState> {
   int memberId = 0;
   bool loggedIn = false;
 
-  HomeCubit() : super(null){
+  HomeCubit() : super(null) {
     checkMemberAuth();
   }
 

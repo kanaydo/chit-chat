@@ -38,7 +38,7 @@ class SignInPage extends StatelessWidget {
               listener: (loginBlocContext, state) {
                 if (state is SignInSuccess) {
                   Navigator.pushNamedAndRemoveUntil(
-                      context, Routes.dashboard, (route) => false);
+                      context, Routes.conversations, (route) => false);
                 } else if (state is SignInError) {
                   final snackBar = SnackBar(
                     content: Text(state.message),
@@ -139,10 +139,8 @@ class SignInPage extends StatelessWidget {
                 } else if (loginState is SignInLoading) {
                   return LoaLoading(message: loginState.message);
                 } else if (loginState is SignInFatalError) {
-                  return LoaNoConnection(
-                    message: loginState.message,
-                    action: () =>
-                        loginBlocContext.bloc<SignInCubit>().resetForm(),
+                  return Center(
+                    child: Text(loginState.message),
                   );
                 } else {
                   return Container();
