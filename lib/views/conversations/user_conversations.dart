@@ -5,6 +5,7 @@ import 'package:flutter_base_app/data/model/user.dart';
 import 'package:flutter_base_app/widget/loa_image_bubble.dart';
 
 class UserConversations extends StatelessWidget {
+
   final List<Conversation> conversations;
   final int userId;
 
@@ -23,11 +24,11 @@ class UserConversations extends StatelessWidget {
                   ),
               itemCount: conversations.length,
               itemBuilder: (context, index) =>
-                  conversation(conversations[index])),
+                  conversationItem(conversations[index])),
     );
   }
 
-  Widget conversation(Conversation conversation) {
+  Widget conversationItem(Conversation conversation) {
     User friend = conversation.userOne.id == userId
         ? conversation.userTwo
         : conversation.userTwo;
