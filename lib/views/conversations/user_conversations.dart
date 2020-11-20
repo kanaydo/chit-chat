@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/core/const/app_color.dart';
 import 'package:flutter_base_app/data/model/conversation.dart';
 import 'package:flutter_base_app/data/model/user.dart';
+import 'package:flutter_base_app/widget/loa_image_bubble.dart';
 
 class UserConversations extends StatelessWidget {
   final List<Conversation> conversations;
@@ -15,8 +17,10 @@ class UserConversations extends StatelessWidget {
           ? Center(
               child: Text('No message yet!'),
             )
-          : ListView.builder(
-              shrinkWrap: true,
+          : ListView.separated(
+              separatorBuilder: (context, index) => Divider(
+                    color: AppColor.SOFT_COLOR,
+                  ),
               itemCount: conversations.length,
               itemBuilder: (context, index) =>
                   conversation(conversations[index])),
@@ -29,22 +33,9 @@ class UserConversations extends StatelessWidget {
         : conversation.userTwo;
     return Row(
       children: [
-        Container(
-            width: 30,
-            height: 30,
-            decoration: new BoxDecoration(
-                shape: BoxShape.circle,
-                image: new DecorationImage(
-                    fit: BoxFit.cover,
-                    image: new NetworkImage(
-                        friend.image
-                    )
-                ),
-                border: Border.all(
-                    width: 1.5,
-                    color: Colors.orange
-                )
-            )
+        LoaImageBubble(url: friend.image),
+        SizedBox(
+          width: 8.0,
         ),
         Text(friend.name),
       ],

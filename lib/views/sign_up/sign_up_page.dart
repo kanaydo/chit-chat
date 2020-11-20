@@ -160,7 +160,7 @@ class SignUpPage extends StatelessWidget {
                                     action: () {
                                       String email = _emailController.text.trim();
                                       String password = _passwordController.text.trim();
-                                      signUpBuilder.bloc<SignUpCubit>().signUpUser(email, password);
+                                      signUpBuilder.read<SignUpCubit>().signUpUser(email, password);
                                     }
                                 ),
                                 SizedBox(height: 8.0,),
@@ -197,7 +197,7 @@ class SignUpPage extends StatelessWidget {
                       } else if (state is SignUpFatalError) {
                         return LoaNoConnection(
                             message: state.message,
-                            action: () => signUpBuilder.bloc<SignUpCubit>().resetForm()
+                            action: () => signUpBuilder.read<SignUpCubit>().resetForm()
                         );
                       }else {
                         return Container();

@@ -7,7 +7,6 @@ import 'package:flutter_base_app/utils/fade_animation.dart';
 import 'package:flutter_base_app/views/sign_in/bloc/sign_in_cubit.dart';
 import 'package:flutter_base_app/widget/loa_button.dart';
 import 'package:flutter_base_app/widget/loa_loading.dart';
-import 'package:flutter_base_app/widget/loa_no_connection.dart';
 import 'package:flutter_base_app/widget/loa_text_field.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -98,7 +97,7 @@ class SignInPage extends StatelessWidget {
                                 var email = _emailController.text;
                                 var password = _passwordController.text;
                                 loginBlocContext
-                                    .bloc<SignInCubit>()
+                                    .read<SignInCubit>()
                                     .loginUser(email, password);
                               }),
                         ),

@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_base_app/core/network/api_client.dart';
 import 'package:flutter_base_app/core/network/app_exception.dart';
-import 'package:flutter_base_app/data/responses/dashboard_response.dart';
 import 'package:flutter_base_app/data/responses/profile_response.dart';
 import 'package:flutter_base_app/data/responses/sign_in_response.dart';
 import 'package:flutter_base_app/data/responses/sign_up_response.dart';
+import 'package:flutter_base_app/data/responses/user_profile_response.dart';
 
-class MemberRepository extends ApiClient {
+class UserRepository extends ApiClient {
 
   signInUser(Map<String, dynamic> params) async {
     try {
@@ -26,11 +26,11 @@ class MemberRepository extends ApiClient {
     }
   }
 
-  getUser(int memberId) async {
+  getUser(int userId) async {
     try {
-      var response = await dio.get('members/$memberId');
-      var dashboardResponse = DashboardResponse.fromJSON(response.data);
-      return dashboardResponse;
+      var response = await dio.get('users/$userId');
+      UserProfileResponse userProfileResponse = UserProfileResponse.fromJSON(response.data);
+      return userProfileResponse;
     } on DioError catch(e) {
       if(e.response != null) {
         var message = e.response.data['message'];

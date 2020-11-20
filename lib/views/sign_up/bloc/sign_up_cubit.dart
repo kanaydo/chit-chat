@@ -1,7 +1,7 @@
 import 'package:flutter_base_app/core/const/strings.dart';
 import 'package:flutter_base_app/core/network/app_exception.dart';
 import 'package:flutter_base_app/core/session_manager.dart';
-import 'package:flutter_base_app/data/repository/member_repository.dart';
+import 'package:flutter_base_app/data/repository/user_repository.dart';
 import 'package:flutter_base_app/data/responses/member_responses.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
@@ -9,7 +9,7 @@ part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
 
-  var memberRepository = MemberRepository();
+  var memberRepository = UserRepository();
   var sessionManager = SessionManager();
 
   SignUpCubit() : super(SignUpIdle());
