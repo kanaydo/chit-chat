@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/core/const/app_color.dart';
+import 'package:flutter_base_app/core/routes.dart';
 import 'package:flutter_base_app/views/conversations/bloc/conversations_cubit.dart';
 import 'package:flutter_base_app/views/conversations/user_conversations.dart';
 import 'package:flutter_base_app/views/conversations/user_image.dart';
@@ -25,6 +26,10 @@ class ConversationPage extends StatelessWidget {
             UserImage(),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.pushNamed(context, Routes.contacts),
+        child: Icon(Icons.message_outlined),
       ),
       body: BlocProvider(
         create: (context) => ConversationsCubit(),
