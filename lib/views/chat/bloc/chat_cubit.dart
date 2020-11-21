@@ -2,6 +2,7 @@ import 'package:flutter_base_app/core/network/app_exception.dart';
 import 'package:flutter_base_app/core/session_manager.dart';
 import 'package:flutter_base_app/data/model/message.dart';
 import 'package:flutter_base_app/data/repository/conversation_repository.dart';
+import 'package:flutter_base_app/data/responses/add_message_response.dart';
 import 'package:flutter_base_app/data/responses/messages_response.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
@@ -34,6 +35,23 @@ class ChatCubit extends Cubit<ChatState> {
       emit(ChatError(message: api.toString()));
     } catch (e) {
       emit(ChatError(message: e.toString()));
+    }
+  }
+
+  void addMessage(String content) async {
+    Map<String, dynamic> params = {
+      'message': {
+        'user_id': _userId,
+        'content': content
+      }
+    };
+    try {
+      AddMessageResponse addMessageResponse = await _conversationRepository.addMessage(_conversationId, params);
+      print(addMessageResponse.message.content);
+    } on ApiException catch (api) {
+      print(api.toString());
+    } catch (e) {
+      print(e.toString());
     }
   }
 }

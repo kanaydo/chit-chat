@@ -16,6 +16,7 @@ class MessageList extends StatelessWidget {
       child: messages.length == 0
           ? LoaNoData()
           : ListView.builder(
+            reverse: true,
               itemCount: messages.length,
               itemBuilder: (context, index) =>
                   messageItem(messages[index], size),

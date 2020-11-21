@@ -59,7 +59,7 @@ class ChatPage extends StatelessWidget {
                     children: [
                       Flexible(
                         child: new LoaTextField(
-                            label: 'enter message',
+                            label: 'enter message..',
                             controller: _newMessageController,
                             focusNode: _newMessageFocusNode),
                       ),
@@ -67,7 +67,10 @@ class ChatPage extends StatelessWidget {
                           padding: EdgeInsets.all(10),
                           minWidth: 0,
                           shape: CircleBorder(),
-                          onPressed: () {},
+                          onPressed: () {
+                            String content = _newMessageController.text;
+                            chatContext.read<ChatCubit>().addMessage(content);
+                          },
                           color: AppColor.BASE_COLOR,
                           child: Icon(
                             Icons.send,

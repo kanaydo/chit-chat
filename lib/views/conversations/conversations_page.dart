@@ -28,6 +28,7 @@ class ConversationPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).primaryColor,
         onPressed: () => Navigator.pushNamed(context, Routes.contacts),
         child: Icon(Icons.message_outlined),
       ),
