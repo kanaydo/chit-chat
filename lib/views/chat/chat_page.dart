@@ -24,7 +24,7 @@ class ChatPage extends StatelessWidget {
         iconTheme: IconThemeData(color: AppColor.BASE_COLOR),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Row(
+        title: Row( 
           children: [
             LoaImageBubble(url: friend.image),
             SizedBox(width: 8),

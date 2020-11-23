@@ -75,7 +75,6 @@ class ChatCubit extends Cubit<ChatState> {
         onMessage: (Map message) {
           Message newMessage = Message.fromJSON(message);
           incomingMessage(newMessage);
-          print(newMessage.content);
         }
     );
   }

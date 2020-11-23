@@ -9,20 +9,18 @@ import 'package:flutter_base_app/data/responses/sign_up_response.dart';
 import 'package:flutter_base_app/data/responses/user_profile_response.dart';
 
 class UserRepository extends ApiClient {
-
   signInUser(Map<String, dynamic> params) async {
     try {
       var response = await dio.post('user_sessions', data: json.encode(params));
       var loginResponse = SignInResponse.fromJSON(response.data);
       return loginResponse;
-    } on DioError catch(e) {
-      if(e.response != null) {
+    } on DioError catch (e) {
+      if (e.response != null) {
         var message = e.response.data['message'];
         throw ApiException(message: message);
-      } else{
+      } else {
         print(e.toString());
         throw Exception(e.toString());
-
       }
     }
   }
@@ -30,13 +28,14 @@ class UserRepository extends ApiClient {
   getUser(int userId) async {
     try {
       var response = await dio.get('users/$userId');
-      UserProfileResponse userProfileResponse = UserProfileResponse.fromJSON(response.data);
+      UserProfileResponse userProfileResponse =
+          UserProfileResponse.fromJSON(response.data);
       return userProfileResponse;
-    } on DioError catch(e) {
-      if(e.response != null) {
+    } on DioError catch (e) {
+      if (e.response != null) {
         var message = e.response.data['message'];
         throw ApiException(message: message);
-      } else{
+      } else {
         throw Exception(e.type);
       }
     }
@@ -45,13 +44,14 @@ class UserRepository extends ApiClient {
   getUserContacts(int userId) async {
     try {
       var response = await dio.get('users/$userId/contacts');
-      ContactsResponse contactsResponse = ContactsResponse.fromJSON(response.data);
+      ContactsResponse contactsResponse =
+          ContactsResponse.fromJSON(response.data);
       return contactsResponse;
-    } on DioError catch(e) {
-      if(e.response != null) {
+    } on DioError catch (e) {
+      if (e.response != null) {
         var message = e.response.data['message'];
         throw ApiException(message: message);
-      } else{
+      } else {
         throw Exception(e.type);
       }
     }
@@ -59,14 +59,14 @@ class UserRepository extends ApiClient {
 
   getUserProfile(int memberId) async {
     try {
-      var response = await dio.get('members/$memberId/profile');
+      var response = await dio.get('users/$memberId/profile');
       var profileResponse = ProfileResponse.fromJSON(response.data);
       return profileResponse;
-    } on DioError catch(e) {
-      if(e.response != null) {
+    } on DioError catch (e) {
+      if (e.response != null) {
         var message = e.response.data['message'];
         throw ApiException(message: message);
-      } else{
+      } else {
         throw Exception(e.toString());
       }
     }
@@ -77,11 +77,11 @@ class UserRepository extends ApiClient {
       var response = await dio.post('members', data: json.encode(params));
       var signUpResponse = SignUpResponse.fromJSON(response.data);
       return signUpResponse;
-    } on DioError catch(e) {
-      if(e.response != null) {
+    } on DioError catch (e) {
+      if (e.response != null) {
         var message = e.response.data['message'];
         throw ApiException(message: message);
-      } else{
+      } else {
         throw Exception(e.toString());
       }
     }
@@ -89,19 +89,19 @@ class UserRepository extends ApiClient {
 
   updateUserProfile(Map<String, dynamic> params, int memberId) async {
     try {
-      var response = await dio.patch('members/$memberId', data: json.encode(params));
+      var response =
+          await dio.patch('members/$memberId', data: json.encode(params));
       ProfileResponse profileResponse = ProfileResponse.fromJSON(response.data);
       return profileResponse;
-    } on DioError catch(e) {
+    } on DioError catch (e) {
       if (e.response != null) {
-        if(e.response != null) {
+        if (e.response != null) {
           var message = e.response.data['message'];
           throw ApiException(message: message);
-        } else{
+        } else {
           throw Exception(e.toString());
         }
       }
     }
   }
-
 }

@@ -20,7 +20,7 @@ class SessionManager {
     return prefs.getBool(Keys.KEY_USER_LOGIN_STATUS) ?? false;
   }
 
-  Future<bool> logoutMember() async {
+  Future<bool> signOutUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove(Keys.KEY_USER_ID);
     prefs.remove(Keys.KEY_USER_LOGIN_STATUS);

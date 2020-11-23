@@ -5,6 +5,7 @@ import 'package:flutter_base_app/views/conversations/bloc/conversations_cubit.da
 import 'package:flutter_base_app/views/conversations/user_conversations.dart';
 import 'package:flutter_base_app/views/conversations/user_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 class ConversationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,13 +18,12 @@ class ConversationPage extends StatelessWidget {
           children: [
             Expanded(
                 child: Text(
-                  'Chats',
-                  style: textTheme.headline5.apply(
-                    color: AppColor.BASE_COLOR
-                  ),
-                )
-            ),
-            UserImage(),
+              'Chats',
+              style: textTheme.headline5.apply(color: AppColor.BASE_COLOR),
+            )),
+            InkWell(
+                onTap: () => Navigator.pushNamed(context, Routes.profile),
+                child: UserImage()),
           ],
         ),
       ),
@@ -42,7 +42,7 @@ class ConversationPage extends StatelessWidget {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
-              } else if(state is ConversationsIdle) {
+              } else if (state is ConversationsIdle) {
                 return UserConversations(conversations: state.conversations);
               } else if (state is ConversationsError) {
                 return Center(
