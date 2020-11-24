@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/core/const/app_color.dart';
+import 'package:flutter_base_app/core/routes.dart';
 import 'package:flutter_base_app/views/contacts/bloc/contacts_cubit.dart';
 import 'package:flutter_base_app/views/contacts/contact_list.dart';
 import 'package:flutter_base_app/views/conversations/user_image.dart';
@@ -28,7 +29,7 @@ class ContactsPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => Navigator.pushNamed(context, Routes.addContact),
         child: Icon(Icons.person_add),
       ),
       body: BlocProvider(

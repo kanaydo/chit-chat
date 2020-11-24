@@ -4,6 +4,7 @@ import 'package:flutter_base_app/core/network/api_client.dart';
 import 'package:flutter_base_app/core/network/app_exception.dart';
 import 'package:flutter_base_app/data/responses/contacts_response.dart';
 import 'package:flutter_base_app/data/responses/profile_response.dart';
+import 'package:flutter_base_app/data/responses/search_response.dart';
 import 'package:flutter_base_app/data/responses/sign_in_response.dart';
 import 'package:flutter_base_app/data/responses/sign_up_response.dart';
 import 'package:flutter_base_app/data/responses/user_profile_response.dart';
@@ -47,6 +48,20 @@ class UserRepository extends ApiClient {
       ContactsResponse contactsResponse =
           ContactsResponse.fromJSON(response.data);
       return contactsResponse;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        var message = e.response.data['message'];
+        throw ApiException(message: message);
+      } else {
+        throw Exception(e.type);
+      }
+    }
+  }
+
+  searchUser(String username) async {
+    try {
+      var response = await dio.get('users/search?keyword=$username');
+      return SearchResponse.fromJSON(response.data);
     } on DioError catch (e) {
       if (e.response != null) {
         var message = e.response.data['message'];

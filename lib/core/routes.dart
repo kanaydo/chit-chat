@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_base_app/views/chat/chat_page.dart';
+import 'package:flutter_base_app/views/contacts/add_contact_page.dart';
 import 'package:flutter_base_app/views/contacts/contact_detail_page.dart';
 import 'package:flutter_base_app/views/contacts/contacts_page.dart';
 import 'package:flutter_base_app/views/conversations/conversations_page.dart';
@@ -14,6 +15,7 @@ class Routes {
   static const String conversations = '/conversations';
   static const String contacts = '/contacts';
   static const String contactDetail = '/contact_detail';
+  static const String addContact = '/add_contact';
   static const String chat = '/chat';
   static const String profile = '/profile';
 
@@ -24,6 +26,7 @@ class Routes {
       Routes.conversations: (context) => ConversationPage(),
       Routes.contacts: (context) => ContactsPage(),
       Routes.contactDetail: (context) => ContactDetailPage(),
+      Routes.addContact: (context) => AddContactPage(),
       Routes.chat: (context) => ChatPage(),
       Routes.profile: (context) => ProfilePage(),
     };
