@@ -1,3 +1,10 @@
+/*
+ * Created by Batara Kanaydo on 24/11/2020
+ * email: batara.girsang@outlook.com
+ * Copyright © 2020 Batara Kanaydo. All rights reserved.
+ * Last modified 11/21/20, 11:14 PM
+ */
+
 import 'package:dio/dio.dart';
 import 'package:flutter_base_app/data/responses/add_message_response.dart';
 import 'package:flutter_base_app/data/responses/conversation_response.dart';

@@ -1,3 +1,10 @@
+/*
+ * Created by Batara Kanaydo on 24/11/2020
+ * email: batara.girsang@outlook.com
+ * Copyright © 2020 Batara Kanaydo. All rights reserved.
+ * Last modified 11/23/20, 11:38 PM
+ */
+
 import 'package:flutter_base_app/core/network/app_exception.dart';
 import 'package:flutter_base_app/data/responses/user_profile_response.dart';
 import 'package:meta/meta.dart';

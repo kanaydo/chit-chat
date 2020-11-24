@@ -1,3 +1,10 @@
+/*
+ * Created by Batara Kanaydo on 24/11/2020
+ * email: batara.girsang@outlook.com
+ * Copyright © 2020 Batara Kanaydo. All rights reserved.
+ * Last modified 11/19/20, 11:50 PM
+ */
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class User {

@@ -1,3 +1,10 @@
+/*
+ * Created by Batara Kanaydo on 24/11/2020
+ * email: batara.girsang@outlook.com
+ * Copyright © 2020 Batara Kanaydo. All rights reserved.
+ * Last modified 11/22/20, 2:19 PM
+ */
+
 import 'package:flutter/material.dart';
 
 class LoaText extends StatelessWidget {
