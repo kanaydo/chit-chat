@@ -34,29 +34,26 @@ class ConversationPage extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) => ConversationsCubit(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: BlocBuilder<ConversationsCubit, ConversationsState>(
-            builder: (conversationContext, state) {
-              if (state is ConversationsLoading) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state is ConversationsIdle) {
-                return UserConversations(conversations: state.conversations);
-              } else if (state is ConversationsError) {
-                return Center(
-                  child: Text(state.message.toString()),
-                );
-              } else if (state is ConversationsFatalError) {
-                return Center(
-                  child: Text(state.message.toString()),
-                );
-              } else {
-                return Container();
-              }
-            },
-          ),
+        child: BlocBuilder<ConversationsCubit, ConversationsState>(
+          builder: (conversationContext, state) {
+            if (state is ConversationsLoading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is ConversationsIdle) {
+              return UserConversations(conversations: state.conversations);
+            } else if (state is ConversationsError) {
+              return Center(
+                child: Text(state.message.toString()),
+              );
+            } else if (state is ConversationsFatalError) {
+              return Center(
+                child: Text(state.message.toString()),
+              );
+            } else {
+              return Container();
+            }
+          },
         ),
       ),
     );

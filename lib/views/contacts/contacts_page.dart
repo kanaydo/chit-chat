@@ -33,29 +33,26 @@ class ContactsPage extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) => ContactsCubit(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: BlocBuilder<ContactsCubit, ContactsState>(
-            builder: (contactsContext, state) {
-              if (state is ContactsLoading) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state is ContactsError) {
-                return Center(
-                  child: Text(state.message),
-                );
-              } else if (state is ContactsFatalError) {
-                return Center(
-                  child: Text(state.message),
-                );
-              } else if (state is ContactsIdle) {
-                return ContactList(contacts: state.contacts);
-              } else {
-                return Container();
-              }
-            },
-          ),
+        child: BlocBuilder<ContactsCubit, ContactsState>(
+          builder: (contactsContext, state) {
+            if (state is ContactsLoading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is ContactsError) {
+              return Center(
+                child: Text(state.message),
+              );
+            } else if (state is ContactsFatalError) {
+              return Center(
+                child: Text(state.message),
+              );
+            } else if (state is ContactsIdle) {
+              return ContactList(contacts: state.contacts);
+            } else {
+              return Container();
+            }
+          },
         ),
       ),
     );

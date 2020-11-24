@@ -63,8 +63,9 @@ class ChatPage extends StatelessWidget {
                             controller: _newMessageController,
                             focusNode: _newMessageFocusNode),
                       ),
+                      SizedBox(width: 8,),
                       MaterialButton(
-                          padding: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(16),
                           minWidth: 0,
                           shape: CircleBorder(),
                           onPressed: () {

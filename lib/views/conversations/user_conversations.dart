@@ -5,6 +5,7 @@ import 'package:flutter_base_app/core/routes.dart';
 import 'package:flutter_base_app/data/model/conversation.dart';
 import 'package:flutter_base_app/data/model/user.dart';
 import 'package:flutter_base_app/widget/loa_image_bubble.dart';
+import 'package:flutter_base_app/widget/loa_no_data.dart';
 
 class UserConversations extends StatelessWidget {
   final List<Conversation> conversations;
@@ -17,7 +18,7 @@ class UserConversations extends StatelessWidget {
     return Container(
       child: conversations.length == 0
           ? Center(
-              child: Text('No message yet!'),
+              child: LoaNoData(),
             )
           : ListView.separated(
               separatorBuilder: (context, index) => Divider(
@@ -33,17 +34,20 @@ class UserConversations extends StatelessWidget {
     User friend = conversation.userOne.id == userId
         ? conversation.userTwo
         : conversation.userTwo;
-    return InkWell(
-      onTap: () => Navigator.pushNamed(context, Routes.chat,
-          arguments: ChatArgument(friend: friend, conversation: conversation)),
-      child: Row(
-        children: [
-          LoaImageBubble(url: friend.image),
-          SizedBox(
-            width: 8.0,
-          ),
-          Text(friend.name),
-        ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: InkWell(
+        onTap: () => Navigator.pushNamed(context, Routes.chat,
+            arguments: ChatArgument(friend: friend, conversation: conversation)),
+        child: Row(
+          children: [
+            LoaImageBubble(url: friend.image),
+            SizedBox(
+              width: 8.0,
+            ),
+            Text(friend.name),
+          ],
+        ),
       ),
     );
   }
