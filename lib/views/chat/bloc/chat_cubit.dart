@@ -9,6 +9,7 @@ import 'package:action_cable/action_cable.dart';
 import 'package:flutter_base_app/core/network/app_exception.dart';
 import 'package:flutter_base_app/core/session_manager.dart';
 import 'package:flutter_base_app/data/model/message.dart';
+import 'package:flutter_base_app/data/model/user.dart';
 import 'package:flutter_base_app/data/repository/conversation_repository.dart';
 import 'package:flutter_base_app/data/responses/add_message_response.dart';
 import 'package:flutter_base_app/data/responses/messages_response.dart';
@@ -18,14 +19,17 @@ import 'package:meta/meta.dart';
 part 'chat_state.dart';
 
 class ChatCubit extends Cubit<ChatState> {
+
   var _sessionManager = SessionManager();
   var _conversationRepository = ConversationRepository();
-  int _conversationId;
-  int _userId;
+  ActionCable _friendCable, _userCable, _conversationCable;
+  int _conversationId, _userId;
+  User _friend;
   List<Message> _messages = [];
 
-  ChatCubit(int conversationId) : super(null) {
+  ChatCubit(int conversationId, User friend) : super(null) {
     _init();
+    this._friend = friend;
     this._conversationId = conversationId;
   }
 
@@ -34,11 +38,21 @@ class ChatCubit extends Cubit<ChatState> {
     if (userId != null || userId != 0) {
       this._userId = userId;
     }
-    getConversationMessages();
-    connectToConversationChannel();
+    _connectCable();
+    _subscribeToConversationChannel();
+    _subscribeToUserTypingChannel();
+    _subscribeToFriendTypingChannel();
+    _getConversationMessages();
   }
 
-  void getConversationMessages() async {
+  void _connectCable () {
+    _friendCable = _userCable = _conversationCable = ActionCable.Connect(
+        DotEnv().env['CABLE'],
+        onConnected: () { }
+    );
+  }
+
+  void _getConversationMessages() async {
     emit(ChatLoading(message: 'getting messages..'));
     try {
       MessagesResponse messagesResponse = await _conversationRepository.conversationMessages(_conversationId);
@@ -60,34 +74,83 @@ class ChatCubit extends Cubit<ChatState> {
     };
     try {
       AddMessageResponse addMessageResponse = await _conversationRepository.addMessage(_conversationId, params);
-      print(addMessageResponse.message.content);
+      if (addMessageResponse.message.content != null) {
+        emit(ChatMessageSent());
+      }
     } on ApiException catch (api) {
       print(api.toString());
     } catch (e) {
       print(e.toString());
     }
+    emit(ChatIdle(messages: _messages, userId: _userId));
   }
 
-  connectToConversationChannel() {
-    var cable = ActionCable.Connect(
-        DotEnv().env['CABLE'], onConnected: () {
-          print("connected to chat channel");
-        }
-    );
-    cable.subscribe(
+  _subscribeToConversationChannel() {
+    _conversationCable.subscribe(
         "MessageNotificationChannel",
         channelParams: {"conversation_id": _conversationId},
         onSubscribed: () {},
         onDisconnected: () {},
         onMessage: (Map message) {
           Message newMessage = Message.fromJSON(message);
-          incomingMessage(newMessage);
+          _incomingMessage(newMessage);
         }
     );
   }
 
-  incomingMessage(Message message) {
+  _incomingMessage(Message message) {
     _messages.insert(0, message);
     emit(ChatIdle(messages: _messages, userId: _userId));
+  }
+
+  _subscribeToUserTypingChannel() {
+    _userCable.subscribe(
+        "TypingNotificationsChannel",
+        channelParams: {
+          'conversation_id': _conversationId,
+          'user_id': _userId
+        },
+        onSubscribed: () {
+          print('subscribed to $_userId typing channel');
+        },
+        onDisconnected: () {},
+        onMessage: (Map message) {
+
+        }
+    );
+  }
+
+  _subscribeToFriendTypingChannel() {
+    _friendCable.subscribe(
+        "TypingNotificationsChannel",
+        channelParams: {
+          'conversation_id': _conversationId,
+          'user_id': _friend.id
+        },
+        onSubscribed: () {
+          print('subscribed to ${_friend.id} typing channel');
+        },
+        onDisconnected: () {},
+        onMessage: (Map message) {
+
+        }
+    );
+  }
+
+  sendTypingStatus() {
+    sendUserTypingStatus(true);
+    Future.delayed(Duration(seconds: 5)).then((value) => sendUserTypingStatus(false));
+  }
+
+  sendUserTypingStatus(bool status) {
+    _userCable.performAction(
+        "TypingNotificationsChannel",
+        action: "typing",
+        channelParams: {
+          "conversation_id": _conversationId,
+          "user_id": _userId
+        },
+        actionParams: { "typing_status": status}
+    );
   }
 }

@@ -26,6 +26,8 @@ class ChatError extends ChatState {
   ChatError({ this.message });
 }
 
+class ChatMessageSent extends ChatState {}
+
 class ChatFatalError extends ChatState {
   final String message;
   ChatFatalError({ this.message });

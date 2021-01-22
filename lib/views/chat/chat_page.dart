@@ -31,7 +31,7 @@ class ChatPage extends StatelessWidget {
         iconTheme: IconThemeData(color: AppColor.BASE_COLOR),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Row( 
+        title: Row(
           children: [
             LoaImageBubble(url: friend.image),
             SizedBox(width: 8),
@@ -43,56 +43,75 @@ class ChatPage extends StatelessWidget {
         ),
       ),
       body: BlocProvider(
-        create: (context) => ChatCubit(conversation.id),
-        child: BlocBuilder<ChatCubit, ChatState>(builder: (chatContext, state) {
-          if (state is ChatLoading) {
-            return Center(child: CircularProgressIndicator());
-          } else if (state is ChatError) {
-            return Center(child: Text(state.message));
-          } else if (state is ChatFatalError) {
-            return Center(child: Text(state.message));
-          } else if (state is ChatIdle) {
-            return Column(
-              children: [
-                Expanded(
-                  child: MessageList(
-                    messages: state.messages,
-                    userId: state.userId,
+        create: (context) => ChatCubit(conversation.id, friend),
+        child: BlocConsumer<ChatCubit, ChatState>(
+          listener: (listenerContext, state) {
+            if (state is ChatMessageSent) {
+              _newMessageController.clear();
+            }
+          },
+          builder: (chatContext, state) {
+            if (state is ChatLoading) {
+              return Center(child: CircularProgressIndicator());
+            } else if (state is ChatError) {
+              return Center(child: Text(state.message));
+            } else if (state is ChatFatalError) {
+              return Center(child: Text(state.message));
+            } else if (state is ChatIdle) {
+              return Column(
+                children: [
+                  Expanded(
+                    child: MessageList(
+                      messages: state.messages,
+                      userId: state.userId,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        child: new LoaTextField(
-                            label: 'enter message..',
-                            controller: _newMessageController,
-                            focusNode: _newMessageFocusNode),
-                      ),
-                      SizedBox(width: 8,),
-                      MaterialButton(
-                          padding: EdgeInsets.all(16),
-                          minWidth: 0,
-                          shape: CircleBorder(),
-                          onPressed: () {
-                            String content = _newMessageController.text;
-                            chatContext.read<ChatCubit>().addMessage(content);
-                          },
-                          color: AppColor.BASE_COLOR,
-                          child: Icon(
-                            Icons.send,
-                            color: AppColor.SOFT_COLOR
-                          ))
-                    ],
-                  ),
-                )
-              ],
-            );
-          } else {
-            return Container();
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Flexible(
+                          child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 8.0),
+                            margin: EdgeInsets.symmetric(vertical: 4.0),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: AppColor.SOFT_COLOR),
+                            child: TextField(
+                              controller: _newMessageController,
+                              focusNode: _newMessageFocusNode,
+                              onChanged: (_) => chatContext
+                                  .read<ChatCubit>()
+                                  .sendTypingStatus(),
+                              style: TextStyle(color: AppColor.BASE_COLOR),
+                              decoration:
+                                  InputDecoration(border: InputBorder.none),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        MaterialButton(
+                            padding: EdgeInsets.all(16),
+                            minWidth: 0,
+                            shape: CircleBorder(),
+                            onPressed: () {
+                              String content = _newMessageController.text;
+                              chatContext.read<ChatCubit>().addMessage(content);
+                            },
+                            color: AppColor.BASE_COLOR,
+                            child: Icon(Icons.send, color: AppColor.SOFT_COLOR))
+                      ],
+                    ),
+                  )
+                ],
+              );
+            } else {
+              return Container();
+            }
           }
-        }),
+        ),
       ),
     );
   }

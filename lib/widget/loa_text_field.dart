@@ -15,13 +15,15 @@ class LoaTextField extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType keyboardType;
   final FocusNode focusNode;
+  final Function onChange;
 
   LoaTextField({
     @required this.label,
     @required this.controller,
     @required this.focusNode,
     this.keyboardType = TextInputType.text,
-    this.obscureText = false
+    this.obscureText = false,
+    this.onChange
   });
 
   @override

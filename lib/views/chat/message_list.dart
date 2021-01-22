@@ -33,14 +33,14 @@ class MessageList extends StatelessWidget {
 
   Widget messageItem(Message message, Size size) {
     BorderRadius rightBubble = BorderRadius.only(
-      topRight: Radius.circular(20),
-      bottomLeft: Radius.circular(20),
-      topLeft: Radius.circular(20)
+      topRight: Radius.circular(10),
+      bottomLeft: Radius.circular(10),
+      topLeft: Radius.circular(10)
     );
     BorderRadius leftBubble = BorderRadius.only(
-      topRight: Radius.circular(20),
-      bottomLeft: Radius.circular(20),
-      bottomRight: Radius.circular(20),
+      topRight: Radius.circular(10),
+      bottomLeft: Radius.circular(10),
+      bottomRight: Radius.circular(10),
     );
 
     return Align(
@@ -52,13 +52,14 @@ class MessageList extends StatelessWidget {
         margin: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
           width: size.width / 1.2,
           decoration: BoxDecoration(
-            color: message.userId == userId ? AppColor.SOFT_COLOR : AppColor.BASE_COLOR,
+            color: message.userId == userId ? AppColor.SOFT_COLOR : AppColor.BORDER_COLOR,
+            border: Border.all(color: AppColor.BORDER_COLOR),
             borderRadius: message.userId == userId ? rightBubble : leftBubble
           ),
           child: Text(
             '${message.content}',
             style: TextStyle(
-              color: message.userId == userId ? AppColor.BASE_COLOR : AppColor.SOFT_COLOR
+              color: AppColor.BASE_COLOR
             ),
             textAlign:
                 message.userId == userId ? TextAlign.end : TextAlign.start,

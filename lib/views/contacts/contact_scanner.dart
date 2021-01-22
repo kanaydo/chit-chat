@@ -16,10 +16,12 @@ class ContactScanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    var bloc = BlocProvider.of<AddContactCubit>(context);
+
     void _onQRViewCreated(QRViewController controller) {
       controller.scannedDataStream.listen((scanData) {
         if (scanData != null) {
-          BlocProvider.of<AddContactCubit>(context).scanData(scanData);
+          bloc.scanData(scanData);
           controller.dispose();
         }
       });

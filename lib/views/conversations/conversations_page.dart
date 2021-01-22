@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_app/core/const/app_color.dart';
 import 'package:flutter_base_app/core/routes.dart';
 import 'package:flutter_base_app/views/conversations/bloc/conversations_cubit.dart';
-import 'package:flutter_base_app/views/conversations/user_conversations.dart';
+import 'package:flutter_base_app/views/conversations/conversation_list.dart';
 import 'package:flutter_base_app/views/conversations/user_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -48,7 +48,7 @@ class ConversationPage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else if (state is ConversationsIdle) {
-              return UserConversations(conversations: state.conversations);
+              return ConversationList(conversations: state.conversations, userId: state.userId,);
             } else if (state is ConversationsError) {
               return Center(
                 child: Text(state.message.toString()),
