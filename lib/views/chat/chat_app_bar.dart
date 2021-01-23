@@ -7,7 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/core/const/app_color.dart';
-import 'package:flutter_base_app/data/model/conversation.dart';
 import 'package:flutter_base_app/data/model/user.dart';
 import 'package:flutter_base_app/widget/loa_image_bubble.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

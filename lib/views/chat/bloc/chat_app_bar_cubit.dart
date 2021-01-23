@@ -6,11 +6,10 @@
  */
 import 'package:action_cable/action_cable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/data/model/conversation.dart';
-import 'package:flutter_base_app/data/model/user.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:meta/meta.dart';
+
 part 'chat_app_bar_state.dart';
 
 class ChatAppBarCubit extends Cubit<ChatAppBarState> {

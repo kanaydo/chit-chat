@@ -13,8 +13,6 @@ import 'package:flutter_base_app/data/model/user.dart';
 import 'package:flutter_base_app/views/chat/bloc/chat_cubit.dart';
 import 'package:flutter_base_app/views/chat/chat_app_bar.dart';
 import 'package:flutter_base_app/views/chat/message_list.dart';
-import 'package:flutter_base_app/widget/loa_image_bubble.dart';
-import 'package:flutter_base_app/widget/loa_text_field.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChatPage extends StatelessWidget {
