@@ -26,7 +26,6 @@ class ConversationItemCubit extends Cubit<ConversationItemState> {
     this._conversation = conversation;
     this._friend = friend;
     this._textTheme = textTheme;
-    //_init();
     _connectCable();
     _subscribeToFriendTypingChannel();
   }
@@ -97,10 +96,6 @@ class ConversationItemCubit extends Cubit<ConversationItemState> {
         color: Colors.green
       ),
     );
-  }
-
-  void _init () {
-    emit(ConversationItemIdle(widget: lastMessage()));
   }
 
 }

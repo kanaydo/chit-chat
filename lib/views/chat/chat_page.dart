@@ -11,6 +11,7 @@ import 'package:flutter_base_app/core/const/app_color.dart';
 import 'package:flutter_base_app/data/model/conversation.dart';
 import 'package:flutter_base_app/data/model/user.dart';
 import 'package:flutter_base_app/views/chat/bloc/chat_cubit.dart';
+import 'package:flutter_base_app/views/chat/chat_app_bar.dart';
 import 'package:flutter_base_app/views/chat/message_list.dart';
 import 'package:flutter_base_app/widget/loa_image_bubble.dart';
 import 'package:flutter_base_app/widget/loa_text_field.dart';
@@ -23,7 +24,6 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ChatArgument arguments = ModalRoute.of(context).settings.arguments;
-    final textTheme = Theme.of(context).textTheme;
     final User friend = arguments.friend;
     final Conversation conversation = arguments.conversation;
     return Scaffold(
@@ -31,15 +31,9 @@ class ChatPage extends StatelessWidget {
         iconTheme: IconThemeData(color: AppColor.BASE_COLOR),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Row(
-          children: [
-            LoaImageBubble(url: friend.image),
-            SizedBox(width: 8),
-            Text(
-              friend.name,
-              style: textTheme.bodyText1.apply(color: AppColor.BASE_COLOR),
-            ),
-          ],
+        title: ChatAppBar(
+          friend: friend,
+          conversationId: conversation.id,
         ),
       ),
       body: BlocProvider(
@@ -72,8 +66,8 @@ class ChatPage extends StatelessWidget {
                       children: [
                         Flexible(
                           child: Container(
-                            padding: EdgeInsets.symmetric(horizontal: 8.0),
-                            margin: EdgeInsets.symmetric(vertical: 4.0),
+                            padding: EdgeInsets.symmetric(horizontal: 16.0),
+                            margin: EdgeInsets.symmetric(vertical: 8.0),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                                 color: AppColor.SOFT_COLOR),
