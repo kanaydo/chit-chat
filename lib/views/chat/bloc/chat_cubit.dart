@@ -5,6 +5,8 @@
  * Last modified 11/21/20, 11:54 PM
  */
 
+import 'dart:io';
+
 import 'package:action_cable/action_cable.dart';
 import 'package:flutter_base_app/core/network/app_exception.dart';
 import 'package:flutter_base_app/core/session_manager.dart';
@@ -16,6 +18,7 @@ import 'package:flutter_base_app/data/responses/messages_response.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:meta/meta.dart';
+
 part 'chat_state.dart';
 
 class ChatCubit extends Cubit<ChatState> {
@@ -152,5 +155,9 @@ class ChatCubit extends Cubit<ChatState> {
         },
         actionParams: { "typing_status": status}
     );
+  }
+
+  void setImageFile(File file) {
+
   }
 }
